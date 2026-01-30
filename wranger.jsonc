@@ -1,7 +1,6 @@
-// wrangler.jsonc
 {
-    "name": "astro-portfolio", // ← change this! must be unique in your Cloudflare account
-    "compatibility_date": "2026-01-30", // ← today's date or later is fine
+    "name": "astro-portfolio",
+    "compatibility_date": "2026-01-30",
     "assets": {
         "directory": "./dist",
     },

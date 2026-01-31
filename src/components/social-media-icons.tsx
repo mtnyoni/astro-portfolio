@@ -5,7 +5,7 @@ export function SocialMediaIcons() {
                 href="https://github.com/mtnyoni"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-background block size-12 rounded-full border p-3"
+                className="bg-background block size-12 rounded-full border border-gray-300 p-3"
             >
                 <GithubIcon />
             </a>
@@ -13,7 +13,7 @@ export function SocialMediaIcons() {
                 href="https://linkedin.com/in/tmnyoni"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-background block size-12 rounded-full border p-3"
+                className="bg-background block size-12 rounded-full border border-gray-300 p-3"
             >
                 <LinkedInIcon />
             </a>
@@ -21,7 +21,7 @@ export function SocialMediaIcons() {
                 href="https://x.com/tmnyoni"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-background block size-12 rounded-full border p-3"
+                className="bg-background block size-12 rounded-full border border-gray-300 p-3"
             >
                 <XIcon />
             </a>

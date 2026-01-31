@@ -1,14 +1,38 @@
 ---
-import { Project } from "@components/project";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { projects } from "@utils/constants";
 ---
 
 <BaseLayout>
-    <section class="mx-auto max-w-280 px-4">
-        <div class="mt-8 mb-12 text-5xl">Projects</div>
+    <section class="mx-auto max-w-200 pt-20 pb-40 px-4 bg-white min-h-screen">
+        <div class="text-4xl font-bold">Projects</div>
         <section class="space-y-3">
-            {projects.map((project, idx) => <Project idx={idx} {...project} />)}
+            {
+                projects.map((project, idx) => {
+                    const listNumber = idx + 1;
+
+                    return (
+                        <a
+                            href={project.link}
+                            target="_blank"
+                            class="flex items-center rounded-full px-2 py-3 hover:bg-gray-100 lg:px-4"
+                        >
+                            <span class="font-medium whitespace-nowrap lg:text-lg">
+                                {listNumber}. {project.title} —{" "}
+                                <span class="hidden text-gray-500 lg:inline-block">
+                                    {project.description}
+                                </span>
+                            </span>
+
+                            <span class="flex grow items-center before:mx-2 before:grow before:border-b before:border-dotted before:border-gray-600 before:content-['']">
+                                <span class="whitespace-nowrap">
+                                    {project.year}
+                                </span>
+                            </span>
+                        </a>
+                    );
+                })
+            }
         </section>
     </section>
 </BaseLayout>

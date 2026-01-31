@@ -154,9 +154,12 @@ export function DockItem({
                 <motion.div
                     ref={ref}
                     style={{ width }}
-                    className="bg-glass flex aspect-square w-10 items-center justify-center rounded-full border shadow-inner shadow-white/0.5 backdrop-blur-2xl duration-100 active:scale-90"
+                    className="bg-glass flex aspect-square w-10 items-center justify-center rounded-full border border-border shadow-inner shadow-white/0.5 backdrop-blur-2xl duration-100 active:scale-90"
                 >
-                    <Icon className="size-6 transition-all duration-400 group-hover:scale-150" />
+                    <Icon
+                        strokeWidth="1.5"
+                        className="size-5 transition-all duration-400 group-hover:scale-150"
+                    />
                     <span className="sr-only">{label}</span>
                 </motion.div>
             </button>

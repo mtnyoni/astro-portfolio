@@ -4,9 +4,9 @@ import portraitUrl from "@assets/portrait.jpg";
 ---
 
 <BaseLayout>
-    <section class="mx-auto max-w-280 px-4 pb-6">
+    <section class="mx-auto max-w-280 pt-20 px-4 pb-40">
         <div class="max-w-xl">
-            <div class="mt-8 text-5xl">About me</div>
+            <div class="text-4xl font-bold">About me</div>
             <div class="mt-8 grid gap-6">
                 <div>
                     <div class="text-lg font-medium">Tawanda M Nyoni</div>
@@ -60,7 +60,7 @@ import portraitUrl from "@assets/portrait.jpg";
         <img
             src={portraitUrl.src}
             alt="About me"
-            class="absolute top-0 right-24 bottom-0 hidden h-full w-md object-cover object-top lg:block"
+            class="fixed top-0 right-24 bottom-0 hidden h-screen w-md object-cover object-top lg:block"
         />
     </section>
 </BaseLayout>

@@ -15,10 +15,13 @@ import "../styles/global.css";
         <meta name="generator" content={Astro.generator} />
         <title>tmnyoni - portfolio</title>
     </head>
-    <body>
-        <main class="isolate">
-            <Background />
-            <slot />
+    <body class="relative">
+        <Background />
+        <main class="relative z-10 min-h-screen">
+            <section>
+                <slot />
+            </section>
+
             <SocialMediaIcons />
             <NavigationDock client:load />
             <MobileNavbar client:load />

@@ -1,50 +1,94 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import bulbImgUrl from "@assets/bulb.jpg";
-import workspaceImgUrl from "@assets/Workspace.jpg";
+import { CalendarIcon } from "@lucide/astro";
 ---
 
 <BaseLayout>
-    <section class="mx-auto max-w-280 px-4">
-        <div class="mt-8 text-5xl">Articles</div>
-        <section>
-            <div class="mt-4 grid gap-4 lg:grid-cols-3">
-                <a
-                    href="/articles/how-to-learn-a-new-programming-language-or-framework"
-                    class="relative isolate flex h-80 items-end rounded-3xl p-8"
-                >
-                    <img
-                        src={bulbImgUrl.src}
-                        class="absolute inset-0 h-80 w-full rounded-[inherit] object-cover object-top"
-                    />
-                    <div
-                        class="absolute bottom-0 left-0 z-10 h-2/3 w-full rounded-b-[inherit] bg-linear-to-b from-transparent to-black to-70%"
-                    >
+    <section class="mx-auto max-w-200 pt-20 pb-40 px-4 bg-white min-h-screen">
+        <div class="text-4xl font-bold">Articles</div>
+        <div class="mt-8 space-y-8">
+            <a href="" class="block space-y-1">
+                <h3 class="text-sky-700">
+                    How to learn a new programming language or framework
+                </h3>
+                <div class="flex items-center gap-3 text-gray-400 text-sm">
+                    <CalendarIcon stroke-width="1.5" class="size-4" /> Aug 31, 2026
+                </div>
+                <p class="text-gray-600">
+                    With it has become increasingly easy to learn a new
+                    programming language or framework. It is increasingly easy
+                    to miss some of the most important aspects of a language or
+                    framework. This article will provide a step-by-step guide on
+                    how to learn a new programming language or framework.
+                </p>
+            </a>
+            <a href="" class="block space-y-1">
+                <h3 class="text-sky-700">
+                    The best tooling and environment for frontend I have tried
+                    so far
+                </h3>
+                <div class="flex items-center gap-3 text-gray-400 text-sm">
+                    <CalendarIcon stroke-width="1.5" class="size-4" /> July 20, 2026
+                </div>
+                <p class="text-gray-600">
+                    In the advent of modern web development, frontend tooling
+                    and environment have become increasingly important. One of
+                    the most popular frontend frameworks is React, which has a
+                    large community and a wide range of tools and libraries
+                    available. Another popular framework is Vue.js, which is
+                    known for its simplicity and ease of use. Both frameworks
+                    have a large ecosystem of tools and libraries that can be
+                    used to build complex web applications.
+                </p>
+                <a href="" class="block space-y-1">
+                    <h3 class="text-sky-700">Observability in Python</h3>
+                    <div class="flex items-center gap-3 text-gray-400 text-sm">
+                        <CalendarIcon stroke-width="1.5" class="size-4" /> May 31,
+                        2026
                     </div>
-                    <div class="relative z-20 text-xl font-medium text-white">
-                        How to learn a new programming language or framework
-                    </div>
+                    <p class="text-gray-600">
+                        This is how I have implemented observability in Python.
+                    </p>
+                    <a href="" class="block space-y-1">
+                        <h3 class="text-sky-700">
+                            Why does observability matter in software
+                            development?
+                        </h3>
+                        <div
+                            class="flex items-center gap-3 text-gray-400 text-sm"
+                        >
+                            <CalendarIcon stroke-width="1.5" class="size-4" /> March
+                            4, 2026
+                        </div>
+                        <p class="text-gray-600">
+                            If you haven't implemented observability in your
+                            software development, I think you should start now.
+                            Here is why:
+                        </p>
+                        <a href="" class="block space-y-1">
+                            <h3 class="text-sky-700">
+                                Python OOP is kinda weird
+                            </h3>
+                            <div
+                                class="flex items-center gap-3 text-gray-400 text-sm"
+                            >
+                                <CalendarIcon
+                                    stroke-width="1.5"
+                                    class="size-4"
+                                /> Feb 17, 2026
+                            </div>
+                            <p class="text-gray-600">
+                                I have been writing code for over 6 years now. I
+                                started with C++ and then moved to Python. I
+                                found Python's OOP implementation to be quite
+                                different from what I was used to in C++. I had
+                                to get used to the way Python handles classes
+                                and objects.
+                            </p>
+                        </a>
+                    </a>
                 </a>
-                <a
-                    href="/articles/the-best-tooling-and-environment-for-frontend"
-                    class="relative isolate flex h-80 items-end rounded-3xl p-8 lg:col-span-2"
-                >
-                    <img
-                        src={workspaceImgUrl.src}
-                        class="absolute inset-0 h-80 w-full rounded-[inherit] object-cover object-top"
-                    />
-                    <div
-                        class="to-70%v absolute bottom-0 left-0 z-10 h-2/3 w-full rounded-b-[inherit] bg-linear-to-b from-transparent to-black"
-                    >
-                    </div>
-                    <div
-                        class="relative z-20 max-w-[40ch] text-xl font-medium text-balance text-white"
-                    >
-                        The best tooling and environment for frontend I have
-                        tried so far
-                    </div>
-                </a>
-            </div>
-        </section>
-    </section>
-</BaseLayout>
+            </a>
+        </div>
+    </section></BaseLayout
+>

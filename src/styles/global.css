@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+:root {
+    --background: oklch(92.3 0.003 48.717);
+    --foreground: oklch(21.6% 0.006 56.043);
+    --primary: ;
+    --primary-foreground: ;
+    --destructive: oklch(0.57 0.1524 18.64);
+    --destructive-foreground: oklch(93.6% 0.032 17.717);
+    --warning: oklch(79.5% 0.184 86.047);
+    --warning-foreground: oklch(97.3% 0.071 103.193);
+    --success: oklch(59.6% 0.145 163.225);
+    --success-foreground: oklch(95 0.052 163.051);
+    --border: oklch(0.92 0.0083 91.49);
+    --big-font-family: "Inknut Antiqua", serif;
+    --default-font-family: "Inter", sans-serif;
+    --glass-background: oklch(1 0 0/0.4);
+
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-border: var(--border);
+    --font-big: var(--big-font-family);
+    --default-font-family: var(--default-font-family);
+    --color-glass: var(--glass-background);
+}
++ @layer utilities {
+    .text-stroke-2 {
+        -webkit-text-stroke: 2px var(--foreground);
+    }
+
+    .text-stroke-3 {
+        -webkit-text-stroke: 3px var(--foreground);
+    }
+
+    .text-stroke-black {
+        -webkit-text-stroke: 2px black;
+    }
+}

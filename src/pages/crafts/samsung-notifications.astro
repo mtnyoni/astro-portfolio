@@ -1,0 +1,29 @@
+---
+import { SamsungPhone } from "@components/samsung-phone-craft";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <div class="mx-auto aspect-[19.5/9] max-w-5xl px-3">
+        <div class="flex items-center gap-10 py-8">
+            <a href="/crafts" class="flex items-center gap-2 text-gray-600">
+                <!-- <CornerUpLeftIcon class="size-4" /> -->
+                Craft
+            </a>
+            <div class="text-lg font-medium">Samsung Notifications</div>
+        </div>
+        <SamsungPhone />
+        <div class="flex items-center justify-between py-8">
+            <a href="/crafts/line-chart" class="block">
+                <div class="text-gray-600">Previous</div>
+                <div class="text-sm">Line chart</div>
+            </a>
+            {
+                /*<Link to="/crafts/rotating-menu" class="block">
+                <div class="text-gray-600">Next</div>
+                <div class="text-sm">Rotating menu </div>
+				</Link>*/
+            }
+        </div>
+    </div>
+</BaseLayout>

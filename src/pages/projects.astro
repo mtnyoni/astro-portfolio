@@ -1,0 +1,14 @@
+---
+import { Project } from "@components/project";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { projects } from "@utils/constants";
+---
+
+<BaseLayout>
+    <section class="mx-auto max-w-280 px-4">
+        <div class="mt-8 mb-12 text-5xl">Projects</div>
+        <section class="space-y-3">
+            {projects.map((project, idx) => <Project idx={idx} {...project} />)}
+        </section>
+    </section>
+</BaseLayout>

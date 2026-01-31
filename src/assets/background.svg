@@ -1,0 +1,25 @@
+<svg
+  width="100%"
+  height="100%"
+  viewBox="0 0 12 1"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+  style="overflow: visible"
+>
+  <defs>
+    <line id="gridline" y1="0" y2="1" stroke="#E7E7E7" vector-effect="non-scaling-stroke" />
+  </defs>
+  <use href="#gridline" x1="0" x2="0" />
+  <use href="#gridline" x1="1" x2="1" />
+  <use href="#gridline" x1="2" x2="2" />
+  <use href="#gridline" x1="3" x2="3" />
+  <use href="#gridline" x1="4" x2="4" />
+  <use href="#gridline" x1="5" x2="5" />
+  <use href="#gridline" x1="6" x2="6" />
+  <use href="#gridline" x1="7" x2="7" />
+  <use href="#gridline" x1="8" x2="8" />
+  <use href="#gridline" x1="9" x2="9" />
+  <use href="#gridline" x1="10" x2="10" />
+  <use href="#gridline" x1="11" x2="11" />
+  <use href="#gridline" x1="12" x2="12" />
+</svg>

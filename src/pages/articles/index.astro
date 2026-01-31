@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import bulbImgUrl from "@assets/bulb.jpg";
+import workspaceImgUrl from "@assets/Workspace.jpg";
+---
+
+<BaseLayout>
+    <section class="mx-auto max-w-280 px-4">
+        <div class="mt-8 text-5xl">Articles</div>
+        <section>
+            <div class="mt-4 grid gap-4 lg:grid-cols-3">
+                <a
+                    href="/articles/how-to-learn-a-new-programming-language-or-framework"
+                    class="relative isolate flex h-80 items-end rounded-3xl p-8"
+                >
+                    <img
+                        src={bulbImgUrl.src}
+                        class="absolute inset-0 h-80 w-full rounded-[inherit] object-cover object-top"
+                    />
+                    <div
+                        class="absolute bottom-0 left-0 z-10 h-2/3 w-full rounded-b-[inherit] bg-linear-to-b from-transparent to-black to-70%"
+                    >
+                    </div>
+                    <div class="relative z-20 text-xl font-medium text-white">
+                        How to learn a new programming language or framework
+                    </div>
+                </a>
+                <a
+                    href="/articles/the-best-tooling-and-environment-for-frontend"
+                    class="relative isolate flex h-80 items-end rounded-3xl p-8 lg:col-span-2"
+                >
+                    <img
+                        src={workspaceImgUrl.src}
+                        class="absolute inset-0 h-80 w-full rounded-[inherit] object-cover object-top"
+                    />
+                    <div
+                        class="to-70%v absolute bottom-0 left-0 z-10 h-2/3 w-full rounded-b-[inherit] bg-linear-to-b from-transparent to-black"
+                    >
+                    </div>
+                    <div
+                        class="relative z-20 max-w-[40ch] text-xl font-medium text-balance text-white"
+                    >
+                        The best tooling and environment for frontend I have
+                        tried so far
+                    </div>
+                </a>
+            </div>
+        </section>
+    </section>
+</BaseLayout>

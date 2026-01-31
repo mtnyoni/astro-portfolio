@@ -1,0 +1,46 @@
+---
+import bulbImgUrl from "@assets/bulb.jpg";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <div class="mx-auto min-h-screen max-w-5xl bg-white px-4">
+        <div class="relative">
+            <img
+                src={bulbImgUrl.src}
+                class="h-80 w-full rounded-md object-cover object-top sm:rounded-3xl"
+            />
+            <div
+                class="absolute bottom-0 left-0 z-10 h-2/3 w-full rounded-b-[inherit] bg-linear-to-b from-transparent to-black to-70%"
+            >
+            </div>
+            <div class="relative z-20 p-4 text-4xl font-medium text-white">
+                How to learn a new programming language or framework
+            </div>
+        </div>
+        <div class="relative mx-auto mt-10 max-w-3xl space-y-10">
+            <p>
+                With AI, you can learn faster and more efficiently than ever
+                before. The key is to find a problem you're genuinely interested
+                in solving, because that curiosity will drive your learning.
+                Start by building a solid foundation: understand variables,
+                constants, data types, and data structures, and explore how they
+                fit together to form the core of any program. As you experiment,
+                let AI guide you through unfamiliar concepts, explain errors,
+                and provide examples that help you connect the dots more
+                quickly.
+            </p>
+            <p>
+                Today, the most important skill isn’t simply writing lines of
+                code — it’s learning how to think through problems and design
+                solutions step by step. Coding becomes much easier once your
+                problem-solving mindset is strong. AI can accelerate that growth
+                by helping you test ideas, debug issues, and refine your
+                approach in real time. When you combine your own reasoning with
+                the speed and clarity of AI, you develop the confidence and
+                intuition to tackle more challenging projects and grow as a
+                developer.
+            </p>
+        </div>
+    </div>
+</BaseLayout>

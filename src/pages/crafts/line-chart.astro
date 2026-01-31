@@ -1,0 +1,27 @@
+---
+import { Chart, manCityMatchHistory } from "@components/line-chart";
+import BaseLayout from "@layouts/BaseLayout.astro";
+// import { CornerUpLeftIcon } from "lucide-react";
+---
+
+<BaseLayout>
+    <section class="mx-auto aspect-[19.5/9] max-w-5xl px-3">
+        <div class="flex items-center gap-10 py-8">
+            <a href="/crafts" class="flex items-center gap-2 text-gray-600">
+                <!-- <CornerUpLeftIcon class="size-4" /> -->
+                Craft
+            </a>
+            <div class="text-lg font-medium">Line chart</div>
+        </div>
+
+        <div class="mt-4 rounded-3xl border bg-white p-4 sm:p-8">
+            <Chart data={manCityMatchHistory} />
+        </div>
+        <div class="flex items-center justify-end py-8">
+            <a href="/crafts/samsung-notifications" class="block">
+                <div class="text-gray-600">Next</div>
+                <div class="text-sm">Samsung Notifications</div>
+            </a>
+        </div>
+    </section>
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import portraitUrl from "@assets/portrait.jpg";
+---
+
+<BaseLayout>
+    <section class="mx-auto max-w-280 px-4 pb-6">
+        <div class="max-w-xl">
+            <div class="mt-8 text-5xl">About me</div>
+            <div class="mt-8 grid gap-6">
+                <div>
+                    <div class="text-lg font-medium">Tawanda M Nyoni</div>
+                    <div class="text-lg text-gray-500">
+                        Software Developer & UI/UX Designer
+                    </div>
+                </div>
+                <div>
+                    <p class="text-gray-700">
+                        I am a full-stack developer with proficiency in both
+                        front-end and back-end development. My primary
+                        programming languages are Python and TypeScript. I am
+                        also experienced with Go and am currently focused on
+                        mastering Odin.
+                    </p>
+
+                    <p class="mt-3 text-gray-700">
+                        In UI/UX design, I leverage Figma to translate user
+                        research and usability testing into intuitive and
+                        visually appealing interfaces. I am committed to
+                        continuously improving user experience, whether for
+                        applications I am developing or exploring innovative
+                        solutions for future projects.
+                    </p>
+                </div>
+                <div class="mt-5 text-gray-700">
+                    <div class="font-medium">
+                        Software Developer @ Claxon Actuaries
+                    </div>
+                    <div class="text-sm">From July 2023 - Present</div>
+                    <div class="mt-3">
+                        I develop backend systems using Python and FastAPI,
+                        design user interfaces with React and Figma, and manage
+                        DevOps infrastructure on AWS. This involves
+                        collaborating across teams to deliver scalable and
+                        user-centered solutions.
+                    </div>
+                </div>
+                <div class="mt-5 text-gray-700">
+                    <div class="font-medium">Freelance Software Developer</div>
+                    <div class="text-sm">From Jan 2022 - Present</div>
+                    <div class="mt-3">
+                        I specialize in backend development with Golang and
+                        TypeScript, craft intuitive user interfaces using React
+                        and Figma, and oversee DevOps processes through GitHub
+                        and VPS infrastructure.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img
+            src={portraitUrl.src}
+            alt="About me"
+            class="absolute top-0 right-24 bottom-0 hidden h-full w-md object-cover object-top lg:block"
+        />
+    </section>
+</BaseLayout>

@@ -1,29 +1,29 @@
 ---
-import { Background } from "@components/background";
-import NavigationDock, { MobileNavbar } from "@components/navbar";
-import { SocialMediaIcons } from "@components/social-media-icons";
-import "../styles/global.css";
+import { Background } from "@components/background"
+import NavigationDock, { MobileNavbar } from "@components/navbar"
+import { SocialMediaIcons } from "@components/social-media-icons"
+import "../styles/global.css"
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>tmnyoni - portfolio</title>
-    </head>
-    <body class="relative">
-        <Background />
-        <main class="relative z-10 min-h-screen">
-            <section>
-                <slot />
-            </section>
-        </main>
-        <SocialMediaIcons />
-        <NavigationDock client:load />
-        <MobileNavbar client:load />
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>tmnyoni - portfolio</title>
+	</head>
+	<body class="relative">
+		<Background />
+		<main class="relative z-10 min-h-screen">
+			<section>
+				<slot />
+			</section>
+		</main>
+		<SocialMediaIcons />
+		<NavigationDock client:load />
+		<MobileNavbar client:load />
+	</body>
 </html>

@@ -1,6 +1,5 @@
 import * as d3 from "d3"
 import { formatDate } from "date-fns"
-import { CornerUpLeftIcon } from "lucide-react"
 import useMeasure from "react-use-measure"
 
 type MatchData = {
@@ -113,7 +112,7 @@ export const manCityMatchHistory: MatchData[] = [
 
 const MARGIN = { top: 10, right: 10, bottom: 20, left: 10 }
 
-export function LineChart({ data }: { readonly data: MatchData[] }) {
+export function MyChart({ data }: { readonly data: MatchData[] }) {
 	const [ref, { width, height }] = useMeasure()
 
 	const xScale = d3
@@ -169,8 +168,8 @@ export function LineChart({ data }: { readonly data: MatchData[] }) {
 						))}
 					</g>
 					<g aria-label="x-axis">
-						{data.map((d) => (
-							<>
+						{data.map((d, i) => (
+							<g key={i}>
 								<line
 									key={`grid-line-${d.date}`}
 									x1={xScale(new Date(d.date)) ?? 0}
@@ -194,7 +193,7 @@ export function LineChart({ data }: { readonly data: MatchData[] }) {
 								>
 									{formatDate(d.date, "dd MMM")}
 								</text>
-							</>
+							</g>
 						))}
 					</g>
 
@@ -221,11 +220,11 @@ export function LineChart({ data }: { readonly data: MatchData[] }) {
 							y2="211.205"
 							gradientUnits="userSpaceOnUse"
 						>
-							<stop stop-color="var(--color-blue-500)"></stop>
+							<stop stopColor="var(--color-blue-500)"></stop>
 							<stop
 								offset="1"
-								stop-color="var(--color-blue-500)"
-								stop-opacity="0"
+								stopColor="var(--color-blue-500)"
+								stopOpacity="0"
 							></stop>
 						</linearGradient>
 						<linearGradient
@@ -236,11 +235,11 @@ export function LineChart({ data }: { readonly data: MatchData[] }) {
 							y2="211.205"
 							gradientUnits="userSpaceOnUse"
 						>
-							<stop stop-color="var(--color-gray-200)"></stop>
+							<stop stopColor="var(--color-gray-200)"></stop>
 							<stop
 								offset="1"
-								stop-color="var(--color-gray-200)"
-								stop-opacity="0"
+								stopColor="var(--color-gray-200)"
+								stopOpacity="0"
 							></stop>
 						</linearGradient>
 					</defs>

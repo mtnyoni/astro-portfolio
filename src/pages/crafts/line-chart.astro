@@ -1,5 +1,5 @@
 ---
-import { LineChart, manCityMatchHistory } from "@components/line-chart"
+import { MyChart, manCityMatchHistory } from "@components/line-chart"
 import BaseLayout from "@layouts/BaseLayout.astro"
 import { CornerUpLeftIcon } from "@lucide/astro"
 ---
@@ -14,8 +14,8 @@ import { CornerUpLeftIcon } from "@lucide/astro"
 			<div class="text-lg font-medium">Line chart</div>
 		</div>
 
-		<div class="border-border mt-4 rounded-3xl border bg-white p-4 sm:p-8">
-			<LineChart data={manCityMatchHistory} client:load />
+		<div class="mt-4 rounded-3xl border border-border bg-white p-4 sm:p-8">
+			<MyChart data={manCityMatchHistory} client:load />
 		</div>
 		<div class="flex items-center justify-end py-8">
 			<a href="/crafts/samsung-notifications" class="block">

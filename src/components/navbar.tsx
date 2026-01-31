@@ -74,7 +74,7 @@ export default function NavigationDock() {
     const mouseXPosition = useMotionValue(Number.POSITIVE_INFINITY);
 
     return (
-        <footer className="absolute bottom-6 z-50 flex h-16 w-full items-center justify-center">
+        <footer className="fixed bottom-10 z-50 flex h-16 w-full items-center justify-center">
             <motion.nav
                 onMouseMove={(e) => mouseXPosition.set(e.pageX)}
                 onMouseLeave={() =>

@@ -3,6 +3,24 @@ import { Background } from "@components/background"
 import NavigationDock, { MobileNavbar } from "@components/navbar"
 import { SocialMediaIcons } from "@components/social-media-icons"
 import "../styles/global.css"
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Tawanda M Nyoni",
+	url: "https://tmnyoni.site",
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Harare",
+		addressCountry: "ZW",
+	},
+	jobTitle: "Software Developer",
+	sameAs: [
+		"https://github.com/mtnyoni",
+		"https://linkedin.com/in/tmnyoni",
+		"http://x.com/tmnyoni",
+	],
+}
 ---
 
 <!doctype html>
@@ -14,6 +32,21 @@ import "../styles/global.css"
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>tmnyoni - portfolio</title>
+
+		<meta
+			name="description"
+			content="Portfolio of Tawanda M Nyoni, a Software Developer based in Harare, Zimbabwe."
+		/>
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content="tmnyoni - portfolio" />
+		<meta property="og:url" content="https://tmnyoni.site" />
+		<meta property="og:locale" content="en_ZW" />
+
+		<script
+			is:inline
+			type="application/ld+json"
+			set:html={JSON.stringify(schema)}
+		/>
 	</head>
 	<body class="relative">
 		<Background />

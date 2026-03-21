@@ -4,8 +4,11 @@ import react from "@astrojs/react"
 import tailwindcss from "@tailwindcss/vite"
 import cloudflare from "@astrojs/cloudflare"
 
+import sitemap from "@astrojs/sitemap"
+
 export default defineConfig({
-	integrations: [react()],
+	site: "https://tmnyoni.site/",
+	integrations: [react(), sitemap()],
 
 	vite: {
 		plugins: [tailwindcss()],

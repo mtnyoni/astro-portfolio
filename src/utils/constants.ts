@@ -5,18 +5,18 @@ export const projects = [
 		link: "https://renteazy.co.zw/",
 		year: 2026,
 	},
-	{
-		title: "Mizano",
-		description: "Event management and ticketing system.",
-		link: "https://mizano.tmnyoni.site",
-		year: 2025,
-	},
-	{
-		title: "Diagramming",
-		description: "Diagramming application.",
-		link: "https://diagramming.tmnyoni.site",
-		year: 2025,
-	},
+	// {
+	// 	title: "Mizano",
+	// 	description: "Event management and ticketing system.",
+	// 	link: "https://mizano.tmnyoni.site",
+	// 	year: 2025,
+	// },
+	// {
+	// 	title: "Diagramming",
+	// 	description: "Diagramming application.",
+	// 	link: "https://diagramming.tmnyoni.site",
+	// 	year: 2025,
+	// },
 	// {
 	// 	title: "Claxon Actuaries Website",
 	// 	description: "Claxon actuaries home page",

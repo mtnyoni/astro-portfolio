@@ -1,0 +1,44 @@
+---
+const desktopLines = Array.from({ length: 13 })
+const mobileLines = Array.from({ length: 7 })
+---
+
+<svg
+	class="fixed inset-0 -z-20 hidden h-full w-full md:block"
+	viewBox="0 0 12 1"
+	preserveAspectRatio="none"
+	aria-hidden="true"
+>
+	{
+		desktopLines.map((_, index) => (
+			<line
+				x1={index}
+				x2={index}
+				y1="0"
+				y2="1"
+				stroke="#E7E7E7"
+				stroke-width="0.005"
+			/>
+		))
+	}
+</svg>
+
+<svg
+	class="fixed inset-0 -z-20 h-full w-full md:hidden"
+	viewBox="0 0 6 1"
+	preserveAspectRatio="none"
+	aria-hidden="true"
+>
+	{
+		mobileLines.map((_, index) => (
+			<line
+				x1={index}
+				x2={index}
+				y1="0"
+				y2="1"
+				stroke="#E7E7E7"
+				stroke-width="0.01"
+			/>
+		))
+	}
+</svg>

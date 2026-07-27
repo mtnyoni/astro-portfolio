@@ -1,5 +1,11 @@
 export const projects = [
 	{
+		title: "RentEazy",
+		description: "Rental property advertising platform.",
+		link: "https://renteazy.co.zw/",
+		year: 2026,
+	},
+	{
 		title: "Mizano",
 		description: "Event management and ticketing system.",
 		link: "https://mizano.tmnyoni.site",

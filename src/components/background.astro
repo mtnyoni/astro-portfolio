@@ -9,18 +9,16 @@ const mobileLines = Array.from({ length: 7 })
 	preserveAspectRatio="none"
 	aria-hidden="true"
 >
-	{
-		desktopLines.map((_, index) => (
-			<line
-				x1={index}
-				x2={index}
-				y1="0"
-				y2="1"
-				stroke="#E7E7E7"
-				stroke-width="0.005"
-			/>
-		))
-	}
+	{desktopLines.map((_, index) => (
+		<line
+			x1={index}
+			x2={index}
+			y1="0"
+			y2="1"
+			stroke="#E7E7E7"
+			stroke-width="0.005"
+		/>
+	))}
 </svg>
 
 <svg
@@ -29,16 +27,14 @@ const mobileLines = Array.from({ length: 7 })
 	preserveAspectRatio="none"
 	aria-hidden="true"
 >
-	{
-		mobileLines.map((_, index) => (
-			<line
-				x1={index}
-				x2={index}
-				y1="0"
-				y2="1"
-				stroke="#E7E7E7"
-				stroke-width="0.01"
-			/>
-		))
-	}
+	{mobileLines.map((_, index) => (
+		<line
+			x1={index}
+			x2={index}
+			y1="0"
+			y2="1"
+			stroke="#E7E7E7"
+			stroke-width="0.01"
+		/>
+	))}
 </svg>

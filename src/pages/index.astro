@@ -12,18 +12,18 @@ import ProjectIcon from "@components/project-icon.astro"
 <BaseLayout>
 	<main
 		id="top"
-		class="mx-auto max-w-190 px-7 pt-24 pb-8 text-[14px] leading-[1.7] text-[#626a6c] [@media(max-width:640px)]:max-w-125 [@media(max-width:640px)]:px-6 [@media(max-width:640px)]:pt-12 [@media(max-width:640px)]:pb-6"
+		class="leading-body text-body-copy mx-auto max-w-190 px-7 pt-24 pb-8 text-sm max-sm:max-w-125 max-sm:px-6 max-sm:pt-12 max-sm:pb-6"
 	>
-		<header
-			class="ml-33.5 pb-13 [@media(max-width:640px)]:ml-0 [@media(max-width:640px)]:pb-5.5"
-		>
+		<header class="ml-33.5 pb-13 max-sm:ml-0 max-sm:pb-5.5">
 			<HeroTitle client:load />
-			<div class="[&_p+p]:mt-4.5">
+			<div class="space-y-4.5">
 				<p>
-					I’m <strong class="font-medium text-mist-700"
-						>Tawanda M. Nyoni</strong
-					>, Software Engineer and UI/UX Designer. I care <br /> about how
-					products look, feel, and work.
+					I’m{" "}
+					<strong class="font-medium text-mist-700">
+						Tawanda M. Nyoni
+					</strong>
+					, Software Engineer and UI/UX Designer. I care <br /> about
+					how products look, feel, and work.
 				</p>
 				<p>
 					<strong class="font-medium text-mist-700">
@@ -33,8 +33,8 @@ import ProjectIcon from "@components/project-icon.astro"
 					<strong class="font-medium text-mist-700">
 						Claxon Business Solutions
 					</strong>
-					. Working across <br /> engineering and design to make complex
-					things feel simple.
+					. Working across <br /> engineering and design to make
+					complex things feel simple.
 				</p>
 				<p>
 					Linux fanatic. Writing Odin, Go, Python, and TypeScript.
@@ -42,79 +42,90 @@ import ProjectIcon from "@components/project-icon.astro"
 				</p>
 			</div>
 			<nav
-				class="mt-6.5 flex gap-5.5 text-[12px] text-[#41494b] [&_a]:flex [&_a]:items-center [&_a]:gap-1 [&>span]:text-[#b5bcbc]"
+				class="leading-inherit text-navigation mt-6.5 flex gap-5.5 text-xs"
 				aria-label="Portfolio sections"
 			>
 				<a
-					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
-					href="#work">Work</a
+					class="ease-standard hover:text-link-hover flex items-center gap-1 transition-colors duration-200 motion-reduce:transition-none"
+					href="#work"
 				>
+					Work
+				</a>
 				<a
-					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
-					href="#craft">Craft</a
+					class="ease-standard hover:text-link-hover flex items-center gap-1 transition-colors duration-200 motion-reduce:transition-none"
+					href="#craft"
 				>
+					Craft
+				</a>
 				<a
-					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
-					href="#writing">Writing</a
+					class="ease-standard hover:text-link-hover flex items-center gap-1 transition-colors duration-200 motion-reduce:transition-none"
+					href="#writing"
 				>
-				<span aria-hidden="true">|</span>
+					Writing
+				</a>
+				<span class="text-separator" aria-hidden="true">
+					|
+				</span>
 				<a
-					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
-					href="#connect">Connect <ArrowUpRight size={13} /></a
+					class="ease-standard hover:text-link-hover flex items-center gap-1 transition-colors duration-200 motion-reduce:transition-none"
+					href="#connect"
 				>
+					Connect <ArrowUpRight size={13} />
+				</a>
 			</nav>
 		</header>
 
 		<section
 			id="work"
-			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-4.25 [@media(max-width:640px)]:py-6.5"
+			class="grid-cols-portfolio grid scroll-mt-8 gap-6 py-7.5 max-sm:grid-cols-1 max-sm:gap-4.25 max-sm:py-6.5"
 			aria-labelledby="work-title"
 		>
 			<h2
-				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				class="leading-inherit text-section-label max-sm:text-link pt-0.75 text-xs font-normal max-sm:font-medium"
 				id="work-title"
 			>
 				Selected work
 			</h2>
 			<div class="-mt-2.5 min-w-0">
-				{
-					projects.map((project, index) => (
-						<a
-							class="-mx-2.5 flex items-center gap-3.5 rounded-[10px] px-2.5 py-3 transition-colors duration-200 ease-[ease] hover:bg-[#e8eded] hover:text-[#151c1d] motion-reduce:transition-none"
-							href={project.link}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<ProjectIcon
-								kind={index === 0 ? "rental" : "finance"}
-							/>
-							<span class="flex flex-col gap-px">
-								<>
-									<span class="flex items-center gap-1.5 font-medium text-mist-700 [&_svg]:text-[#8c9596]">
-										{project.title}{" "}
-										<ArrowUpRight size={13} />
-									</span>
-									<span class="text-[12px]">
-										{project.description}
-									</span>
-								</>
-							</span>
-							<span class="ml-auto text-[11px] text-[#858d8f] tabular-nums">
-								{project.year}
-							</span>
-						</a>
-					))
-				}
+				{projects.map((project, index) => (
+					<a
+						class="rounded-project ease-standard hover:bg-project-hover hover:text-link-hover -mx-2.5 flex items-center gap-3.5 px-2.5 py-3 transition-colors duration-200 motion-reduce:transition-none"
+						href={project.link}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<ProjectIcon
+							kind={index === 0 ? "rental" : "finance"}
+						/>
+						<span class="flex flex-col gap-px">
+							<>
+								<span class="flex items-center gap-1.5 font-medium text-mist-700">
+									{project.title}{" "}
+									<ArrowUpRight
+										class="text-link-icon"
+										size={13}
+									/>
+								</span>
+								<span class="leading-inherit text-xs">
+									{project.description}
+								</span>
+							</>
+						</span>
+						<span class="text-caption text-metadata ml-auto tabular-nums">
+							{project.year}
+						</span>
+					</a>
+				))}
 			</div>
 		</section>
 
 		<section
 			id="craft"
-			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-4.25 [@media(max-width:640px)]:py-6.5"
+			class="grid-cols-portfolio grid scroll-mt-8 gap-6 py-7.5 max-sm:grid-cols-1 max-sm:gap-4.25 max-sm:py-6.5"
 			aria-labelledby="craft-title"
 		>
 			<h2
-				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				class="leading-inherit text-section-label max-sm:text-link pt-0.75 text-xs font-normal max-sm:font-medium"
 				id="craft-title"
 			>
 				Craft
@@ -124,21 +135,15 @@ import ProjectIcon from "@components/project-icon.astro"
 					Little experiments exploring how designs come about, and
 					laying out my imagination.
 				</p>
-				<div
-					class="grid grid-cols-2 gap-1 [@media(max-width:380px)]:grid-cols-1"
-				>
+				<div class="max-xs:grid-cols-1 grid grid-cols-2 gap-1">
 					<a
-						class="group transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+						class="group ease-standard hover:text-link-hover transition-colors duration-200 motion-reduce:transition-none"
 						href="/crafts/line-chart"
 					>
-						<div
-							class="relative grid h-50 place-items-center overflow-hidden rounded-xl bg-[#e7ece9] [@media(max-width:380px)]:h-55 [@media(max-width:640px)]:h-45"
-						>
-							<div
-								class="absolute inset-1 overflow-hidden rounded-lg"
-							>
+						<div class="bg-chart-surface max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl max-sm:h-45">
+							<div class="absolute inset-1 overflow-hidden rounded-lg">
 								<img
-									class="h-full w-full rounded-lg object-cover transition-transform duration-300 ease-[ease] motion-safe:group-hover:scale-105 motion-reduce:transition-none"
+									class="ease-standard h-full w-full rounded-lg object-cover transition-transform duration-300 motion-safe:group-hover:scale-105 motion-reduce:transition-none"
 									src={chart.src}
 									width={chart.width}
 									height={chart.height}
@@ -147,21 +152,15 @@ import ProjectIcon from "@components/project-icon.astro"
 								/>
 							</div>
 						</div>
-						<div
-							class="block pt-1 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-1.25 [&>span]:text-[11px]"
-						>
-							<h3 class="text-xs text-mist-500">
+						<div class="block pt-1">
+							<h3 class="flex items-center gap-1.25 text-xs text-mist-500">
 								Animated line chart
 							</h3>
 						</div>
 					</a>
 					<div class="group">
-						<div
-							class="relative h-50 overflow-hidden rounded-xl border border-[#dfe5e4] bg-[#e6e9ed] [@media(max-width:380px)]:h-[220px] [@media(max-width:640px)]:h-[180px]"
-						>
-							<div
-								class="absolute inset-1 overflow-hidden rounded-lg"
-							>
+						<div class="border-preview-border bg-video-surface max-xs:h-55 relative h-50 overflow-hidden rounded-xl border max-sm:h-45">
+							<div class="absolute inset-1 overflow-hidden rounded-lg">
 								<video
 									class="size-full rounded-lg object-cover"
 									id="notification-preview"
@@ -172,25 +171,24 @@ import ProjectIcon from "@components/project-icon.astro"
 									playsinline
 									preload="metadata"
 									aria-label="Samsung notification animation preview"
-								>
-								</video>
+								></video>
 								<button
-									class="absolute bottom-2.5 left-2.5 flex cursor-pointer items-center gap-3.5 rounded-md bg-[#ffffffed] px-[9px] py-[5px] text-[10px] text-[#394142] shadow-[0_1px_4px_#0001]"
+									class="bg-preview-control text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 flex cursor-pointer items-center gap-3.5 rounded-md px-2.25 py-1.25"
 									id="preview-toggle"
 									type="button"
 									aria-controls="notification-preview"
 									aria-pressed="false"
-									>Play preview <span aria-hidden="true"
-										>▷</span
-									>
+								>
+									Play preview{" "}
+									<span aria-hidden="true">▷</span>
 								</button>
 							</div>
 						</div>
 						<a
-							class="block pt-1 transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none [&_h3]:flex [&_h3]:items-center [&_h3]:gap-[5px] [&>span]:text-[11px]"
+							class="ease-standard hover:text-link-hover block pt-1 transition-colors duration-200 motion-reduce:transition-none"
 							href="/crafts/samsung-notifications"
 						>
-							<h3 class="text-xs text-mist-500">
+							<h3 class="flex items-center gap-1.25 text-xs text-mist-500">
 								Samsung notifications
 							</h3>
 						</a>
@@ -201,11 +199,11 @@ import ProjectIcon from "@components/project-icon.astro"
 
 		<section
 			id="writing"
-			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			class="grid-cols-portfolio grid scroll-mt-8 gap-6 py-7.5 max-sm:grid-cols-1 max-sm:gap-4.25 max-sm:py-6.5"
 			aria-labelledby="writing-title"
 		>
 			<h2
-				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				class="leading-inherit text-section-label max-sm:text-link pt-0.75 text-xs font-normal max-sm:font-medium"
 				id="writing-title"
 			>
 				Writing
@@ -215,29 +213,29 @@ import ProjectIcon from "@components/project-icon.astro"
 					My two cents on how good software is engineered.
 				</p>
 				<a
-					class="flex items-center gap-5 transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none [&_p]:mt-[5px] [&_p]:text-[12px] [&>svg]:ml-auto [&>svg]:shrink-0"
+					class="ease-standard hover:text-link-hover flex items-center gap-5 transition-colors duration-200 motion-reduce:transition-none"
 					href="/articles/how-to-learn-a-new-programming-language-or-framework"
 				>
 					<div class="-space-y-1.5">
-						<h3
-							class="text-sm leading-[1.55] font-medium text-mist-700"
-						>
+						<h3 class="leading-heading text-sm font-medium text-mist-700">
 							How to learn a new programming language or framework
 						</h3>
-						<p>Looking beyond the syntax.</p>
+						<p class="leading-inherit mt-1.25 text-xs">
+							Looking beyond the syntax.
+						</p>
 					</div>
-					<ArrowUpRight size={17} />
+					<ArrowUpRight class="ml-auto shrink-0" size={17} />
 				</a>
 			</div>
 		</section>
 
 		<section
 			id="connect"
-			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			class="grid-cols-portfolio grid scroll-mt-8 gap-6 py-7.5 max-sm:grid-cols-1 max-sm:gap-4.25 max-sm:py-6.5"
 			aria-labelledby="connect-title"
 		>
 			<h2
-				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				class="leading-inherit text-section-label max-sm:text-link pt-0.75 text-xs font-normal max-sm:font-medium"
 				id="connect-title"
 			>
 				Elsewhere
@@ -247,11 +245,9 @@ import ProjectIcon from "@components/project-icon.astro"
 					Have something in mind, or big ideas that need to be turned
 					<br /> into reality? Hit me up.
 				</p>
-				<div
-					class="mt-3 flex flex-wrap gap-5.5 [&_a]:flex [&_a]:items-center [&_a]:gap-1.5 [&_a]:text-[12px] [&_a]:text-[#414b4c] [&_a:hover]:text-[#151c1d]"
-				>
+				<div class="mt-3 flex flex-wrap gap-5.5">
 					<a
-						class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+						class="leading-inherit text-link ease-standard hover:text-link-hover flex items-center gap-1.5 text-xs transition-colors duration-200 motion-reduce:transition-none"
 						href="https://github.com/mtnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -260,7 +256,7 @@ import ProjectIcon from "@components/project-icon.astro"
 						<ArrowUpRight size={12} />
 					</a>
 					<a
-						class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+						class="leading-inherit text-link ease-standard hover:text-link-hover flex items-center gap-1.5 text-xs transition-colors duration-200 motion-reduce:transition-none"
 						href="https://linkedin.com/in/tmnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -269,7 +265,7 @@ import ProjectIcon from "@components/project-icon.astro"
 						<ArrowUpRight size={12} />
 					</a>
 					<a
-						class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+						class="leading-inherit text-link ease-standard hover:text-link-hover flex items-center gap-1.5 text-xs transition-colors duration-200 motion-reduce:transition-none"
 						href="https://x.com/tmnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -280,9 +276,7 @@ import ProjectIcon from "@components/project-icon.astro"
 				</div>
 			</div>
 		</section>
-		<footer
-			class="mt-10 ml-33.5 flex justify-between gap-4 border-t border-[#dce2e2] pt-5 text-[10px] text-[#828b8c] [@media(max-width:640px)]:ml-0"
-		>
+		<footer class="border-footer-border text-micro text-footer-copy mt-10 ml-33.5 flex justify-between gap-4 border-t pt-5 max-sm:ml-0">
 			<span>© {new Date().getFullYear()} Tawanda Nyoni</span>
 		</footer>
 	</main>

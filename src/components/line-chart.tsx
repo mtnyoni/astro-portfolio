@@ -1,5 +1,6 @@
 import * as d3 from "d3"
-import { formatDate } from "date-fns"
+import { formatDate, parseISO } from "date-fns"
+import { useEffect, useId, useRef, useState } from "react"
 import useMeasure from "react-use-measure"
 
 type MatchData = {
@@ -52,199 +53,390 @@ export const manCityMatchHistory: MatchData[] = [
 		impliedWinProbabilityPerc: 50,
 		actualResult: "Loss (1-2)",
 	},
-	{
-		date: "2025-11-9",
-		opponent: "Liverpool (H)",
-		competition: "Premier League",
-		moneylineOdds: "-107 to 9/10 (Fractional)",
-		impliedWinProbabilityPerc: 52.2,
-		actualResult: "Win (3-0)",
-	},
-	{
-		date: "2025-11-5",
-		opponent: "Dortmund (H)",
-		competition: "Champions League",
-		moneylineOdds: "-333 (Estimate)",
-		impliedWinProbabilityPerc: 77,
-		actualResult: "Win (4-1)",
-	},
-	{
-		date: "2025-11-2",
-		opponent: "Bournemouth (H)",
-		competition: "Premier League",
-		moneylineOdds: "-500 (Estimate)",
-		impliedWinProbabilityPerc: 83.3,
-		actualResult: "Win (3-1)",
-	},
-	{
-		date: "2025-10-29",
-		opponent: "Swansea (A)",
-		competition: "League Cup",
-		moneylineOdds: "-400 (Estimate)",
-		impliedWinProbabilityPerc: 80,
-		actualResult: "Win (3-1)",
-	},
-	{
-		date: "2025-10-26",
-		opponent: "Aston Villa (A)",
-		competition: "Premier League",
-		moneylineOdds: "-133 (Estimate)",
-		impliedWinProbabilityPerc: 57.1,
-		actualResult: "Loss (0-1)",
-	},
-	{
-		date: "2025-10-21",
-		opponent: "Villarreal (A)",
-		competition: "Champions League",
-		moneylineOdds: "-200 (Estimate)",
-		impliedWinProbabilityPerc: 66.7,
-		actualResult: "Win (2-0)",
-	},
-	{
-		date: "2025-10-18",
-		opponent: "Everton (H)",
-		competition: "Premier League",
-		moneylineOdds: "-450 (Estimate)",
-		impliedWinProbabilityPerc: 81.8,
-		actualResult: "Win (2-0)",
-	},
 ].reverse()
 
-const MARGIN = { top: 10, right: 10, bottom: 20, left: 10 }
+const MARGIN = { top: 40, right: 24, bottom: 60, left: 44 }
+const INITIAL_SIZE = { width: 640, height: 320 }
 
 export function MyChart({ data }: { readonly data: MatchData[] }) {
-	const [ref, { width, height }] = useMeasure()
-
-	const xScale = d3
-		.scaleBand<Date>()
-		.domain(data.map((d) => new Date(d.date)))
-		.range([MARGIN.left, width - MARGIN.right])
-
-	const yScale = d3
-		.scaleLinear()
-		.domain([0, Math.max(...data.map((d) => d.impliedWinProbabilityPerc))])
-		.range([height - MARGIN.bottom, MARGIN.top])
-
-	const area = d3
-		.area<(typeof data)[number]>()
-		.x((d) => xScale(new Date(d.date)) ?? 0)
-		.y0(height - MARGIN.bottom)
-		.y1((d) => yScale(d.impliedWinProbabilityPerc))
-
-	const areaPathData = area(data)
-	const line = d3
-		.line<(typeof data)[number]>()
-		.x((d) => xScale(new Date(d.date)) ?? 0)
-		.y((d) => yScale(d.impliedWinProbabilityPerc))
-
-	const d = line(data)
-
-	if (!areaPathData || !d) {
-		return null
+	const [ref, bounds] = useMeasure()
+	const [tooltipRef, tooltipBounds] = useMeasure()
+	const [pointer, setPointer] = useState<{ x: number; y: number } | null>(
+		null
+	)
+	const id = useId()
+	const figureRef = useRef<HTMLElement>(null)
+	const [hovered, setHovered] = useState<number | null>(null)
+	const [pinned, setPinned] = useState<number | null>(null)
+	const [focused, setFocused] = useState<number | null>(null)
+	const tooltipId = `${id}-tooltip`
+	const updatePointer = (
+		element: HTMLButtonElement,
+		clientX: number,
+		clientY: number
+	) => {
+		const rect = element.parentElement?.getBoundingClientRect()
+		if (rect) setPointer({ x: clientX - rect.left, y: clientY - rect.top })
 	}
 
+	const dismiss = () => {
+		setHovered(null)
+		setPinned(null)
+		setFocused(null)
+	}
+
+	useEffect(() => {
+		const handleOutsidePress = (event: PointerEvent) => {
+			if (!figureRef.current?.contains(event.target as Node)) {
+				setHovered(null)
+				setPinned(null)
+				setFocused(null)
+			}
+		}
+		document.addEventListener("pointerdown", handleOutsidePress)
+		return () =>
+			document.removeEventListener("pointerdown", handleOutsidePress)
+	}, [])
+
+	const gradientId = `${id}-gradient`
+	const captionId = `${id}-caption`
+	const matches = [...data]
+		.sort((a, b) => a.date.localeCompare(b.date))
+		.slice(-5)
+
+	const width = bounds.width > 0 ? bounds.width : INITIAL_SIZE.width
+	const height = bounds.height > 0 ? bounds.height : INITIAL_SIZE.height
+	const bottom = height - MARGIN.bottom
+	const xScale = d3
+		.scalePoint<string>()
+		.domain(matches.map((match) => match.date))
+		.range([MARGIN.left, width - MARGIN.right])
+	const yScale = d3.scaleLinear().domain([0, 100]).range([bottom, MARGIN.top])
+	const x = (match: MatchData) => xScale(match.date) ?? MARGIN.left
+	const y = (match: MatchData) => yScale(match.impliedWinProbabilityPerc)
+	const line = d3.line<MatchData>().x(x).y(y).curve(d3.curveMonotoneX)(
+		matches
+	)
+
+	const area = d3
+		.area<MatchData>()
+		.x(x)
+		.y0(bottom)
+		.y1(y)
+		.curve(d3.curveMonotoneX)(matches)
+
+	const activeIndex = hovered ?? focused ?? pinned
+	const activeMatch = activeIndex === null ? undefined : matches[activeIndex]
+	const anchor = pointer ?? {
+		x: activeMatch ? x(activeMatch) : 0,
+		y: activeMatch ? y(activeMatch) : 0,
+	}
+	const tooltipWidth = tooltipBounds.width || Math.min(224, width - 16)
+	const tooltipHeight = tooltipBounds.height || 150
+	const offset = 14
+	const tooltipLeft = Math.max(
+		8,
+		Math.min(
+			anchor.x + offset + tooltipWidth <= width - 8
+				? anchor.x + offset
+				: anchor.x - tooltipWidth - offset,
+			width - tooltipWidth - 8
+		)
+	)
+	const tooltipTop = Math.max(
+		8,
+		Math.min(
+			anchor.y + offset + tooltipHeight <= height - 8
+				? anchor.y + offset
+				: anchor.y - tooltipHeight - offset,
+			height - tooltipHeight - 8
+		)
+	)
+
 	return (
-		<div ref={ref} className="h-80 w-full">
-			<div className="h-full w-full p-2 sm:p-8">
-				<svg
-					role="img"
-					aria-label="chart"
-					viewBox={`0 0 ${width} ${height}`}
-					className="h-full w-full"
-				>
-					<g aria-label="y-axis">
-						{yScale.ticks(4).map((tick) => (
+		<figure
+			ref={figureRef}
+			className="space-y-4"
+			onKeyDown={(event) => {
+				if (event.key === "Escape") {
+					dismiss()
+					event.stopPropagation()
+				}
+			}}
+		>
+			<div
+				ref={ref}
+				className="relative h-80 w-full"
+				onPointerLeave={() => setHovered(null)}
+			>
+				{matches.length ? (
+					<svg
+						role="img"
+						aria-label="Manchester City pre-match win probability"
+						aria-describedby={captionId}
+						viewBox={`0 0 ${width} ${height}`}
+						className="size-full"
+					>
+						<text
+							x={MARGIN.left}
+							y={16}
+							className="fill-body-copy text-xs"
+						>
+							Implied win probability (%)
+						</text>
+						<g aria-label="Y axis: probability from 0 to 100 percent">
+							{[0, 25, 50, 75, 100].map((tick) => (
+								<g key={tick}>
+									<line
+										x1={MARGIN.left}
+										x2={width - MARGIN.right}
+										y1={yScale(tick)}
+										y2={yScale(tick)}
+										className="stroke-preview-border"
+										strokeDasharray="3 4"
+									/>
+									<text
+										x={MARGIN.left - 10}
+										y={yScale(tick)}
+										dy="0.35em"
+										textAnchor="end"
+										className="fill-metadata text-micro"
+									>
+										{tick}%
+									</text>
+								</g>
+							))}
+						</g>
+						<path
+							d={area ?? undefined}
+							fill={`url(#${gradientId})`}
+						/>
+						<path
+							d={line ?? undefined}
+							fill="none"
+							className="stroke-primary"
+							strokeWidth={2.5}
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							vectorEffect="non-scaling-stroke"
+						/>
+						{activeMatch && (
 							<line
-								key={`grid-line-${tick}`}
-								x1={MARGIN.left}
-								y1={yScale(tick) - MARGIN.bottom}
-								x2={width - MARGIN.right}
-								y2={yScale(tick) - MARGIN.bottom}
-								stroke="currentColor"
-								strokeWidth="1"
-								strokeDasharray="1.1"
-								className="fill-gray-300"
+								x1={x(activeMatch)}
+								x2={x(activeMatch)}
+								y1={MARGIN.top}
+								y2={bottom}
+								className="stroke-primary"
+								strokeDasharray="4 4"
+								strokeOpacity={0.45}
+								aria-hidden="true"
 							/>
+						)}
+						{matches.map((match) => (
+							<circle
+								key={match.date}
+								cx={x(match)}
+								cy={y(match)}
+								r={activeMatch?.date === match.date ? 5 : 3.5}
+								className="stroke-primary fill-white"
+								strokeWidth={2}
+							></circle>
 						))}
-					</g>
-					<g aria-label="x-axis">
-						{data.map((d, i) => (
-							<g key={i}>
-								<line
-									key={`grid-line-${d.date}`}
-									x1={xScale(new Date(d.date)) ?? 0}
-									y1={height - 2 * MARGIN.bottom}
-									x2={xScale(new Date(d.date)) ?? 0}
-									y2={height - MARGIN.bottom}
-									stroke="currentColor"
-									strokeWidth="1"
-									className="fill-gray-300"
-								/>
-
+						<g aria-label="X axis: match date, oldest to newest">
+							{matches.map((match) => (
 								<text
-									key={d.date}
-									x={
-										(xScale(new Date(d.date)) ?? 0) +
-										xScale.bandwidth() / 2
-									}
-									y={height - MARGIN.bottom + 16}
-									fontSize="12"
+									key={match.date}
+									x={x(match)}
+									y={bottom + 18}
 									textAnchor="middle"
+									className="fill-body-copy text-micro"
 								>
-									{formatDate(d.date, "dd MMM")}
+									<tspan x={x(match)}>
+										{formatDate(parseISO(match.date), "dd")}
+									</tspan>
+									<tspan x={x(match)} dy={13}>
+										{formatDate(
+											parseISO(match.date),
+											"MMM"
+										)}
+									</tspan>
 								</text>
-							</g>
-						))}
-					</g>
-
-					<path
-						d={d}
-						fill="none"
-						stroke="var(--color-blue-600)"
-						strokeWidth={2}
-					/>
-
-					<path
-						d={areaPathData}
-						fill="url(#gradient-color)"
-						fillOpacity={0.3}
-						vectorEffect="non-scaling-stroke"
-					/>
-
-					<defs>
-						<linearGradient
-							id="gradient-color"
-							x1="183"
-							y1="51.3741"
-							x2="183"
-							y2="211.205"
-							gradientUnits="userSpaceOnUse"
-						>
-							<stop stopColor="var(--color-blue-500)"></stop>
-							<stop
-								offset="1"
-								stopColor="var(--color-blue-500)"
-								stopOpacity="0"
-							></stop>
-						</linearGradient>
-						<linearGradient
-							id="gradient-grayscale"
-							x1="183"
-							y1="51.3741"
-							x2="183"
-							y2="211.205"
-							gradientUnits="userSpaceOnUse"
-						>
-							<stop stopColor="var(--color-gray-200)"></stop>
-							<stop
-								offset="1"
-								stopColor="var(--color-gray-200)"
-								stopOpacity="0"
-							></stop>
-						</linearGradient>
-					</defs>
-				</svg>
+							))}
+							<text
+								x={(MARGIN.left + width - MARGIN.right) / 2}
+								y={height - 5}
+								textAnchor="middle"
+								className="fill-body-copy text-xs"
+							>
+								Match date
+							</text>
+						</g>
+						<defs>
+							<linearGradient
+								id={gradientId}
+								x1="0"
+								y1="0"
+								x2="0"
+								y2="1"
+							>
+								<stop
+									stopColor="var(--primary)"
+									stopOpacity={0.25}
+								/>
+								<stop
+									offset="1"
+									stopColor="var(--primary)"
+									stopOpacity={0}
+								/>
+							</linearGradient>
+						</defs>
+					</svg>
+				) : (
+					<p className="text-body-copy text-sm">
+						No match data available.
+					</p>
+				)}
+				{matches.map((match, index) => {
+					const left =
+						index === 0
+							? MARGIN.left - 20
+							: (x(matches[index - 1]) + x(match)) / 2
+					const right =
+						index === matches.length - 1
+							? width - 4
+							: (x(match) + x(matches[index + 1])) / 2
+					return (
+						<button
+							key={match.date}
+							type="button"
+							className="focus-visible:outline-primary absolute z-10 cursor-crosshair rounded-md bg-transparent focus-visible:outline-2 focus-visible:outline-offset-0"
+							style={{
+								left: `${(left / width) * 100}%`,
+								width: `${((right - left) / width) * 100}%`,
+								top: MARGIN.top,
+								height: bottom - MARGIN.top,
+							}}
+							aria-label={`${formatDate(parseISO(match.date), "dd MMM yyyy")}, ${match.opponent}, win probability ${match.impliedWinProbabilityPerc}%, result ${match.actualResult}`}
+							aria-pressed={pinned === index}
+							aria-describedby={
+								activeIndex === index ? tooltipId : undefined
+							}
+							onPointerEnter={(event) => {
+								if (event.pointerType !== "touch") {
+									updatePointer(
+										event.currentTarget,
+										event.clientX,
+										event.clientY
+									)
+									setHovered(index)
+								}
+							}}
+							onPointerMove={(event) => {
+								if (event.pointerType !== "touch") {
+									updatePointer(
+										event.currentTarget,
+										event.clientX,
+										event.clientY
+									)
+									setHovered(index)
+								}
+							}}
+							onClick={(event) => {
+								if (event.detail > 0)
+									updatePointer(
+										event.currentTarget,
+										event.clientX,
+										event.clientY
+									)
+								setFocused(null)
+								setHovered(null)
+								setPinned((current) =>
+									current === index ? null : index
+								)
+							}}
+							onFocus={(event) => {
+								if (
+									event.currentTarget.matches(
+										":focus-visible"
+									)
+								) {
+									setPointer(null)
+									setFocused(index)
+								}
+							}}
+							onBlur={() => setFocused(null)}
+							onKeyDown={(event) => {
+								if (
+									event.key === "ArrowRight" ||
+									event.key === "ArrowLeft"
+								) {
+									event.preventDefault()
+									const next =
+										event.key === "ArrowRight"
+											? event.currentTarget
+													.nextElementSibling
+											: event.currentTarget
+													.previousElementSibling
+									if (next instanceof HTMLButtonElement)
+										next.focus()
+								}
+							}}
+						/>
+					)
+				})}
+				{activeMatch && (
+					<div
+						id={tooltipId}
+						role="tooltip"
+						ref={tooltipRef}
+						className="border-preview-border text-body-copy pointer-events-none absolute z-20 w-56 rounded-xl border bg-white p-3 text-xs shadow-lg"
+						style={{
+							left: tooltipLeft,
+							top: tooltipTop,
+							maxWidth: Math.max(0, width - 16),
+						}}
+					>
+						<p className="text-micro text-metadata">
+							{formatDate(
+								parseISO(activeMatch.date),
+								"dd MMM yyyy"
+							)}{" "}
+							· {activeMatch.competition}
+						</p>
+						<p className="mt-1 font-medium text-mist-700">
+							Manchester City vs {activeMatch.opponent}
+						</p>
+						<dl className="mt-3 space-y-1">
+							<div className="flex justify-between gap-3">
+								<dt>Win probability</dt>
+								<dd className="font-semibold text-mist-700">
+									{activeMatch.impliedWinProbabilityPerc}%
+								</dd>
+							</div>
+							<div className="flex justify-between gap-3">
+								<dt>Result</dt>
+								<dd>{activeMatch.actualResult}</dd>
+							</div>
+						</dl>
+					</div>
+				)}
 			</div>
-		</div>
+			<figcaption
+				id={captionId}
+				className="text-body-copy text-xs leading-relaxed"
+			>
+				{matches.length > 0 && (
+					<>
+						Manchester City’s implied win probability before each
+						match ({formatDate(parseISO(matches[0].date), "d MMM")}–
+						{formatDate(
+							parseISO(matches[matches.length - 1].date),
+							"d MMM yyyy"
+						)}
+						).
+					</>
+				)}
+			</figcaption>
+		</figure>
 	)
 }

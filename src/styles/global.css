@@ -3,7 +3,7 @@
 :root {
 	--background: var(--color-mist-100);
 	--foreground: oklch(21.6% 0.006 56.043);
-	--primary: ;
+	--primary: #11b8d0;
 	--primary-foreground: ;
 	--destructive: oklch(0.57 0.1524 18.64);
 	--destructive-foreground: oklch(93.6% 0.032 17.717);
@@ -21,6 +21,32 @@
 }
 
 @theme {
+	--breakpoint-xs: 23.75rem;
+	--text-caption: 0.6875rem;
+	--text-micro: 0.625rem;
+	--leading-body: 1.7;
+	--leading-heading: 1.55;
+	--leading-inherit: inherit;
+	--ease-standard: ease;
+	--radius-project: 0.625rem;
+	--shadow-preview: 0 1px 4px #0001;
+	--color-body-copy: #626a6c;
+	--color-navigation: #41494b;
+	--color-separator: #b5bcbc;
+	--color-link-hover: #151c1d;
+	--color-section-label: #7a8284;
+	--color-link: #414b4c;
+	--color-project-hover: #e8eded;
+	--color-link-icon: #8c9596;
+	--color-metadata: #858d8f;
+	--color-chart-surface: #e7ece9;
+	--color-preview-border: #dfe5e4;
+	--color-video-surface: #e6e9ed;
+	--color-preview-control: #ffffffed;
+	--color-control-copy: #394142;
+	--color-footer-border: #dce2e2;
+	--color-footer-copy: #828b8c;
+
 	--font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
 	--color-mist-100: oklch(96.3% 0.002 197.1);
 }
@@ -104,4 +130,8 @@ body::-webkit-scrollbar-thumb:hover {
 	:root {
 		scroll-behavior: auto;
 	}
+}
+
+@utility grid-cols-portfolio {
+	grid-template-columns: 6.875rem minmax(0, 1fr);
 }

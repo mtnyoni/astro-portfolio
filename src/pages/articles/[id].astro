@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from "astro:content"
+import Layout from "@layouts/base-layout.astro"
+import { ArrowLeftIcon } from "@lucide/astro"
+
+export async function getStaticPaths() {
+	const posts = await getCollection("articles", ({ data }) => !data.draft)
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+
+const date = post.data.pubDate.toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+})
+---
+
+<Layout title={post.data.title}>
+	<main
+		class="leading-body text-body-copy mx-auto max-w-190 px-7 pt-12 pb-16 text-sm max-sm:max-w-125 max-sm:px-6 max-sm:pt-8"
+	>
+		<div class="py-6">
+			<a
+				href="/articles"
+				class="ease-standard hover:text-link-hover inline-flex items-center gap-2 text-xs text-mist-500 transition-colors duration-200 motion-reduce:transition-none"
+			>
+				<ArrowLeftIcon class="size-4" />
+				Articles
+			</a>
+		</div>
+
+		<header class="pb-10 sm:ml-33.5">
+			<h1
+				class="mb-2 text-2xl leading-[1.1] font-normal tracking-[-0.04em] text-mist-700"
+			>
+				{post.data.title}
+			</h1>
+			<time
+				class="text-metadata text-xs"
+				datetime={post.data.pubDate.toISOString()}
+			>
+				{date}
+			</time>
+		</header>
+
+		<article
+			class="prose prose-sm prose-h2:text-xs prose-h2:font-normal prose-h2:text-section-label max-sm:prose-h2:text-link max-sm:prose-h2:font-medium sm:grid-cols-portfolio max-w-none [--tw-prose-body:var(--color-body-copy)] [--tw-prose-headings:var(--color-mist-700)] [--tw-prose-links:var(--color-link)] sm:grid sm:gap-x-6 sm:gap-y-4 sm:*:my-0 sm:*:min-w-0 sm:[&>*:not(h2)]:col-start-2 sm:[&>h2]:col-start-1 sm:[&>h2]:pt-0.75 sm:[&>h2:not(:first-child)]:mt-8 sm:[&>h2:not(:first-child)+*]:mt-8"
+		>
+			<Content />
+		</article>
+	</main>
+</Layout>

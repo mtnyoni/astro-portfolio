@@ -26,11 +26,11 @@ import ProjectIcon from "@components/project-icon.astro"
 						class="hidden md:block"
 					/> about how products look, feel, and work.
 				</p>
-				<p>
+				<p class="space-x-1">
 					<strong class="font-medium text-mist-700">
 						Senior Software Developer
 					</strong>
-					at
+					<span>at</span>
 					<strong class="font-medium text-mist-700">
 						Claxon Business Solutions
 					</strong>
@@ -215,25 +215,28 @@ import ProjectIcon from "@components/project-icon.astro"
 			class="grid-cols-portfolio grid scroll-mt-8 gap-6 py-7.5 max-sm:grid-cols-1 max-sm:gap-4.25 max-sm:py-6.5"
 			aria-labelledby="writing-title"
 		>
-			<h2
-				class="leading-inherit text-section-label max-sm:text-link pt-0.75 text-xs font-normal max-sm:font-medium"
+			<a
+				class="leading-inherit text-section-label max-sm:text-link flex items-center gap-3 pt-0.75 text-xs font-normal max-sm:font-medium"
 				id="writing-title"
+				href="/articles"
 			>
-				Writing
-			</h2>
+				<span>Articles</span>
+				<ArrowUpRight class="size-3.5 shrink-0" />
+			</a>
 			<div class="min-w-0">
 				<p class="mb-2 max-w-102.5">
 					My two cents on how good software is engineered.
 				</p>
 				<a
 					class="ease-standard hover:text-link-hover flex items-center gap-5 transition-colors duration-200 motion-reduce:transition-none"
-					href="/articles/how-to-learn-a-new-programming-language-or-framework"
+					href="/articles/what-does-it-mean-to-be-a-good-software-developer-in-the-age-of-ai"
 				>
 					<div class="-space-y-1.5">
 						<h3
 							class="leading-heading text-sm font-medium text-mist-700"
 						>
-							How to learn a new programming language or framework
+							What does it mean to be a good software developer in
+							the age of AI?
 						</h3>
 						<p class="leading-inherit mt-1.25 text-xs">
 							Looking beyond the syntax.

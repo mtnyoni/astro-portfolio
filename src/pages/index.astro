@@ -22,8 +22,9 @@ import ProjectIcon from "@components/project-icon.astro"
 					<strong class="font-medium text-mist-700">
 						Tawanda M. Nyoni
 					</strong>
-					, Software Engineer and UI/UX Designer. I care <br /> about
-					how products look, feel, and work.
+					, Software Engineer and UI/UX Designer. I care <br
+						class="hidden md:block"
+					/> about how products look, feel, and work.
 				</p>
 				<p>
 					<strong class="font-medium text-mist-700">
@@ -33,8 +34,8 @@ import ProjectIcon from "@components/project-icon.astro"
 					<strong class="font-medium text-mist-700">
 						Claxon Business Solutions
 					</strong>
-					. Working across <br /> engineering and design to make
-					complex things feel simple.
+					. Working across <br class="hidden md:block" /> engineering and
+					design to make complex things feel simple.
 				</p>
 				<p>
 					Linux fanatic. Writing Odin, Go, Python, and TypeScript.
@@ -63,9 +64,7 @@ import ProjectIcon from "@components/project-icon.astro"
 				>
 					Writing
 				</a>
-				<span class="text-separator" aria-hidden="true">
-					|
-				</span>
+				<span class="text-separator" aria-hidden="true"> | </span>
 				<a
 					class="ease-standard hover:text-link-hover flex items-center gap-1 transition-colors duration-200 motion-reduce:transition-none"
 					href="#connect"
@@ -87,35 +86,37 @@ import ProjectIcon from "@components/project-icon.astro"
 				Selected work
 			</h2>
 			<div class="-mt-2.5 min-w-0">
-				{projects.map((project, index) => (
-					<a
-						class="rounded-project ease-standard hover:bg-project-hover hover:text-link-hover -mx-2.5 flex items-center gap-3.5 px-2.5 py-3 transition-colors duration-200 motion-reduce:transition-none"
-						href={project.link}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<ProjectIcon
-							kind={index === 0 ? "rental" : "finance"}
-						/>
-						<span class="flex flex-col gap-px">
-							<>
-								<span class="flex items-center gap-1.5 font-medium text-mist-700">
-									{project.title}{" "}
-									<ArrowUpRight
-										class="text-link-icon"
-										size={13}
-									/>
-								</span>
-								<span class="leading-inherit text-xs">
-									{project.description}
-								</span>
-							</>
-						</span>
-						<span class="text-caption text-metadata ml-auto tabular-nums">
-							{project.year}
-						</span>
-					</a>
-				))}
+				{
+					projects.map((project, index) => (
+						<a
+							class="rounded-project ease-standard hover:bg-project-hover hover:text-link-hover -mx-2.5 flex items-center gap-3.5 px-2.5 py-3 transition-colors duration-200 motion-reduce:transition-none"
+							href={project.link}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<ProjectIcon
+								kind={index === 0 ? "rental" : "finance"}
+							/>
+							<span class="flex flex-col gap-px">
+								<>
+									<span class="flex items-center gap-1.5 font-medium text-mist-700">
+										{project.title}{" "}
+										<ArrowUpRight
+											class="text-link-icon"
+											size={13}
+										/>
+									</span>
+									<span class="leading-inherit text-xs">
+										{project.description}
+									</span>
+								</>
+							</span>
+							<span class="text-caption text-metadata ml-auto tabular-nums">
+								{project.year}
+							</span>
+						</a>
+					))
+				}
 			</div>
 		</section>
 
@@ -140,8 +141,12 @@ import ProjectIcon from "@components/project-icon.astro"
 						class="group ease-standard hover:text-link-hover transition-colors duration-200 motion-reduce:transition-none"
 						href="/crafts/line-chart"
 					>
-						<div class="bg-chart-surface max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl max-sm:h-45">
-							<div class="absolute inset-1 overflow-hidden rounded-lg">
+						<div
+							class="bg-chart-surface max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl max-sm:h-45"
+						>
+							<div
+								class="absolute inset-1 overflow-hidden rounded-lg"
+							>
 								<img
 									class="ease-standard h-full w-full rounded-lg object-cover transition-transform duration-300 motion-safe:group-hover:scale-105 motion-reduce:transition-none"
 									src={chart.src}
@@ -153,14 +158,20 @@ import ProjectIcon from "@components/project-icon.astro"
 							</div>
 						</div>
 						<div class="block pt-1">
-							<h3 class="flex items-center gap-1.25 text-xs text-mist-500">
+							<h3
+								class="flex items-center gap-1.25 text-xs text-mist-500"
+							>
 								Animated line chart
 							</h3>
 						</div>
 					</a>
 					<div class="group">
-						<div class="border-preview-border bg-video-surface max-xs:h-55 relative h-50 overflow-hidden rounded-xl border max-sm:h-45">
-							<div class="absolute inset-1 overflow-hidden rounded-lg">
+						<div
+							class="border-preview-border bg-video-surface max-xs:h-55 relative h-50 overflow-hidden rounded-xl border max-sm:h-45"
+						>
+							<div
+								class="absolute inset-1 overflow-hidden rounded-lg"
+							>
 								<video
 									class="size-full rounded-lg object-cover"
 									id="notification-preview"
@@ -188,7 +199,9 @@ import ProjectIcon from "@components/project-icon.astro"
 							class="ease-standard hover:text-link-hover block pt-1 transition-colors duration-200 motion-reduce:transition-none"
 							href="/crafts/samsung-notifications"
 						>
-							<h3 class="flex items-center gap-1.25 text-xs text-mist-500">
+							<h3
+								class="flex items-center gap-1.25 text-xs text-mist-500"
+							>
 								Samsung notifications
 							</h3>
 						</a>
@@ -217,7 +230,9 @@ import ProjectIcon from "@components/project-icon.astro"
 					href="/articles/how-to-learn-a-new-programming-language-or-framework"
 				>
 					<div class="-space-y-1.5">
-						<h3 class="leading-heading text-sm font-medium text-mist-700">
+						<h3
+							class="leading-heading text-sm font-medium text-mist-700"
+						>
 							How to learn a new programming language or framework
 						</h3>
 						<p class="leading-inherit mt-1.25 text-xs">
@@ -243,7 +258,7 @@ import ProjectIcon from "@components/project-icon.astro"
 			<div class="min-w-0">
 				<p>
 					Have something in mind, or big ideas that need to be turned
-					<br /> into reality? Hit me up.
+					<br class="hidden md:block" /> into reality? Hit me up.
 				</p>
 				<div class="mt-3 flex flex-wrap gap-5.5">
 					<a
@@ -276,7 +291,9 @@ import ProjectIcon from "@components/project-icon.astro"
 				</div>
 			</div>
 		</section>
-		<footer class="border-footer-border text-micro text-footer-copy mt-10 ml-33.5 flex justify-between gap-4 border-t pt-5 max-sm:ml-0">
+		<footer
+			class="border-footer-border text-micro text-footer-copy mt-10 ml-33.5 flex justify-between gap-4 border-t pt-5 max-sm:ml-0"
+		>
 			<span>© {new Date().getFullYear()} Tawanda Nyoni</span>
 		</footer>
 	</main>

@@ -20,9 +20,9 @@ export default function HeroTitle() {
 	return (
 		<h1
 			id="intro-heading"
-			className="mb-7 font-sans text-[clamp(2.25rem,5vw,2rem)] leading-[1.1] font-normal tracking-[-0.055em] text-[#303839]"
+			className="mb-7 font-sans text-[clamp(2.25rem,5vw,2rem)] leading-[1.1] font-normal tracking-[-0.055em] text-mist-700"
 		>
-			<div>I build software that feels</div>
+			<div className="inline md:block mr-1 md:mr-0">I build software that feels</div>
 			<div className="text-primary relative inline-grid overflow-hidden align-bottom">
 				<div
 					aria-hidden="true"
@@ -48,7 +48,7 @@ export default function HeroTitle() {
 							duration: 0.5,
 							ease: [0.22, 1, 0.36, 1],
 						}}
-						className="col-start-1 row-start-1 block whitespace-nowrap"
+						className="col-start-1 row-start-1 md:block whitespace-nowrap"
 					>
 						{words[activeWord]}
 					</motion.div>

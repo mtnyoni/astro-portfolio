@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layouts/base-layout.astro"
+import { ArrowLeftIcon } from "@lucide/astro"
+---
+
+<BaseLayout>
+	<section class="mx-auto aspect-19.5/9 max-w-190 px-3">
+		<div class="flex items-center gap-10 py-8">
+			<a
+				href="/#craft"
+				class="flex items-center gap-2 text-xs text-mist-500"
+			>
+				<ArrowLeftIcon class="size-4" />
+				Back
+			</a>
+		</div>
+		<slot />
+	</section>
+</BaseLayout>

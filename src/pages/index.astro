@@ -12,13 +12,13 @@ import ProjectIcon from "@components/project-icon.astro"
 <BaseLayout>
 	<main
 		id="top"
-		class="mx-auto max-w-[760px] px-7 pt-24 pb-8 text-[14px] leading-[1.7] text-[#626a6c] [@media(max-width:640px)]:max-w-[500px] [@media(max-width:640px)]:px-6 [@media(max-width:640px)]:pt-12 [@media(max-width:640px)]:pb-6"
+		class="mx-auto max-w-190 px-7 pt-24 pb-8 text-[14px] leading-[1.7] text-[#626a6c] [@media(max-width:640px)]:max-w-125 [@media(max-width:640px)]:px-6 [@media(max-width:640px)]:pt-12 [@media(max-width:640px)]:pb-6"
 	>
 		<header
-			class="ml-[134px] pb-[52px] [@media(max-width:640px)]:ml-0 [@media(max-width:640px)]:pb-[22px]"
+			class="ml-33.5 pb-13 [@media(max-width:640px)]:ml-0 [@media(max-width:640px)]:pb-5.5"
 		>
 			<HeroTitle client:load />
-			<div class="[&_p+p]:mt-[18px]">
+			<div class="[&_p+p]:mt-4.5">
 				<p>
 					I’m <strong class="font-medium text-mist-700"
 						>Tawanda M. Nyoni</strong
@@ -26,11 +26,14 @@ import ProjectIcon from "@components/project-icon.astro"
 					products look, feel, and work.
 				</p>
 				<p>
-					<strong class="font-medium text-mist-700"
-						>Senior Software Developer</strong
-					> at <strong class="font-medium text-mist-700"
-						>Claxon Business Solutions</strong
-					>. Working across <br /> engineering and design to make complex
+					<strong class="font-medium text-mist-700">
+						Senior Software Developer
+					</strong>
+					at
+					<strong class="font-medium text-mist-700">
+						Claxon Business Solutions
+					</strong>
+					. Working across <br /> engineering and design to make complex
 					things feel simple.
 				</p>
 				<p>
@@ -39,7 +42,7 @@ import ProjectIcon from "@components/project-icon.astro"
 				</p>
 			</div>
 			<nav
-				class="mt-[26px] flex gap-[22px] text-[12px] text-[#41494b] [&_a]:flex [&_a]:items-center [&_a]:gap-1 [&>span]:text-[#b5bcbc]"
+				class="mt-6.5 flex gap-5.5 text-[12px] text-[#41494b] [&_a]:flex [&_a]:items-center [&_a]:gap-1 [&>span]:text-[#b5bcbc]"
 				aria-label="Portfolio sections"
 			>
 				<a
@@ -64,11 +67,11 @@ import ProjectIcon from "@components/project-icon.astro"
 
 		<section
 			id="work"
-			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-[30px] [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-4.25 [@media(max-width:640px)]:py-6.5"
 			aria-labelledby="work-title"
 		>
 			<h2
-				class="pt-[3px] text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
 				id="work-title"
 			>
 				Selected work
@@ -107,88 +110,90 @@ import ProjectIcon from "@components/project-icon.astro"
 
 		<section
 			id="craft"
-			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-[30px] [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-4.25 [@media(max-width:640px)]:py-6.5"
 			aria-labelledby="craft-title"
 		>
 			<h2
-				class="pt-[3px] text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
 				id="craft-title"
 			>
 				Craft
 			</h2>
 			<div class="min-w-0">
-				<p class="mb-5 max-w-[410px]">
+				<p class="mb-5 max-w-102.5">
 					Little experiments exploring how designs come about, and
 					laying out my imagination.
 				</p>
 				<div
-					class="grid grid-cols-2 gap-4 [@media(max-width:380px)]:grid-cols-1"
+					class="grid grid-cols-2 gap-1 [@media(max-width:380px)]:grid-cols-1"
 				>
 					<a
 						class="group transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
 						href="/crafts/line-chart"
 					>
 						<div
-							class="relative grid h-[200px] place-items-center overflow-hidden rounded-xl border border-[#dfe5e4] bg-[#e7ece9] p-[18px] [@media(max-width:380px)]:h-[220px] [@media(max-width:640px)]:h-[180px]"
+							class="relative grid h-50 place-items-center overflow-hidden rounded-xl bg-[#e7ece9] [@media(max-width:380px)]:h-55 [@media(max-width:640px)]:h-45"
 						>
-							<img
-								class="w-full rounded-[5px] shadow-[0_8px_24px_#35493d12] transition-transform duration-300 ease-[ease] motion-safe:group-hover:-translate-y-[3px] motion-reduce:transition-none"
-								src={chart.src}
-								width={chart.width}
-								height={chart.height}
-								alt="Interactive line chart with a soft green area fill"
-								loading="lazy"
-							/>
-							<span
-								class="absolute right-2.5 bottom-2.5 text-[#798580]"
+							<div
+								class="absolute inset-1 overflow-hidden rounded-lg"
 							>
-								<ArrowUpRight size={15} />
-							</span>
+								<img
+									class="h-full w-full rounded-lg object-cover transition-transform duration-300 ease-[ease] motion-safe:group-hover:scale-105 motion-reduce:transition-none"
+									src={chart.src}
+									width={chart.width}
+									height={chart.height}
+									alt="Interactive line chart with a soft green area fill"
+									loading="lazy"
+								/>
+							</div>
 						</div>
 						<div
-							class="block pt-3 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-[5px] [&>span]:text-[11px]"
+							class="block pt-1 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-1.25 [&>span]:text-[11px]"
 						>
-							<h3
-								class="text-[13px] leading-[1.55] font-medium text-mist-700"
-							>
+							<h3 class="text-xs text-mist-500">
 								Animated line chart
 							</h3>
-							<span>Data, with a little life.</span>
 						</div>
 					</a>
 					<div class="group">
 						<div
-							class="relative h-[200px] overflow-hidden rounded-xl border border-[#dfe5e4] bg-[#e6e9ed] [@media(max-width:380px)]:h-[220px] [@media(max-width:640px)]:h-[180px]"
+							class="relative h-50 overflow-hidden rounded-xl border border-[#dfe5e4] bg-[#e6e9ed] [@media(max-width:380px)]:h-[220px] [@media(max-width:640px)]:h-[180px]"
 						>
-							<video
-								class="size-full object-cover"
-								id="notification-preview"
-								poster={notificationPoster.src}
-								src={notifications}
-								muted
-								loop
-								playsinline
-								preload="metadata"
-								aria-label="Samsung notification animation preview"
-							></video><button
-								class="absolute bottom-2.5 left-2.5 flex cursor-pointer items-center gap-3.5 rounded-md bg-[#ffffffed] px-[9px] py-[5px] text-[10px] text-[#394142] shadow-[0_1px_4px_#0001]"
-								id="preview-toggle"
-								type="button"
-								aria-controls="notification-preview"
-								aria-pressed="false"
-								>Play preview <span aria-hidden="true">▷</span
-								></button
+							<div
+								class="absolute inset-1 overflow-hidden rounded-lg"
 							>
+								<video
+									class="size-full rounded-lg object-cover"
+									id="notification-preview"
+									poster={notificationPoster.src}
+									src={notifications}
+									muted
+									loop
+									playsinline
+									preload="metadata"
+									aria-label="Samsung notification animation preview"
+								>
+								</video>
+								<button
+									class="absolute bottom-2.5 left-2.5 flex cursor-pointer items-center gap-3.5 rounded-md bg-[#ffffffed] px-[9px] py-[5px] text-[10px] text-[#394142] shadow-[0_1px_4px_#0001]"
+									id="preview-toggle"
+									type="button"
+									aria-controls="notification-preview"
+									aria-pressed="false"
+									>Play preview <span aria-hidden="true"
+										>▷</span
+									>
+								</button>
+							</div>
 						</div>
 						<a
-							class="block pt-3 transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none [&_h3]:flex [&_h3]:items-center [&_h3]:gap-[5px] [&>span]:text-[11px]"
+							class="block pt-1 transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none [&_h3]:flex [&_h3]:items-center [&_h3]:gap-[5px] [&>span]:text-[11px]"
 							href="/crafts/samsung-notifications"
-							><h3
-								class="text-[13px] leading-[1.55] font-medium text-mist-700"
-							>
-								Samsung notifications <ArrowUpRight size={13} />
-							</h3><span>A study in motion & feedback.</span></a
 						>
+							<h3 class="text-xs text-mist-500">
+								Samsung notifications
+							</h3>
+						</a>
 					</div>
 				</div>
 			</div>

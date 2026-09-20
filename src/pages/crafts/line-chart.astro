@@ -1,27 +1,17 @@
 ---
 import { MyChart, manCityMatchHistory } from "@components/line-chart"
-import BaseLayout from "@layouts/base-layout.astro"
-import { CornerUpLeftIcon } from "@lucide/astro"
+import CraftsLayout from "@layouts/crafts-layout.astro"
 ---
 
-<BaseLayout>
-	<section class="mx-auto aspect-[19.5/9] max-w-5xl px-3">
-		<div class="flex items-center gap-10 py-8">
-			<a href="/#craft" class="flex items-center gap-2 text-gray-600">
-				<CornerUpLeftIcon class="size-4" />
-				All craft
-			</a>
-			<div class="text-lg font-medium">Line chart</div>
-		</div>
-
-		<div class="border-border mt-4 rounded-3xl border bg-white p-4 sm:p-8">
-			<MyChart data={manCityMatchHistory} client:load />
-		</div>
-		<div class="flex items-center justify-end py-8">
-			<a href="/crafts/samsung-notifications" class="block">
-				<div class="text-gray-600">Next</div>
-				<div class="text-sm">Samsung Notifications</div>
-			</a>
-		</div>
-	</section>
-</BaseLayout>
+<CraftsLayout>
+	<div class="text-lg font-medium">Line chart</div>
+	<div class="border-border mt-4 rounded-3xl border bg-white p-4 sm:p-8">
+		<MyChart data={manCityMatchHistory} client:load />
+	</div>
+	<div class="flex items-center justify-end py-8">
+		<a href="/crafts/samsung-notifications" class="block">
+			<div class="text-gray-600">Next</div>
+			<div class="text-sm">Samsung Notifications</div>
+		</a>
+	</div>
+</CraftsLayout>

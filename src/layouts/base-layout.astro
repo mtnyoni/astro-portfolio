@@ -61,18 +61,6 @@ const schema = {
 	</head>
 	<body class="relative">
 		<div class="relative z-10 min-h-screen">
-			{
-				Astro.url.pathname !== "/" && (
-					<nav
-						aria-label="Home"
-						class="mx-auto max-w-200 px-4 pt-6 text-sm"
-					>
-						<a href="/" class="text-gray-600 hover:text-gray-950">
-							← Tawanda Nyoni
-						</a>
-					</nav>
-				)
-			}
 			<slot />
 		</div>
 	</body>

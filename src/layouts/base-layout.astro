@@ -1,6 +1,4 @@
 ---
-import Background from "@components/background.astro"
-import { SocialMediaIcons } from "@components/social-media-icons"
 import "../styles/global.css"
 
 const schema = {
@@ -13,7 +11,8 @@ const schema = {
 		addressLocality: "Harare",
 		addressCountry: "ZW",
 	},
-	jobTitle: "Software Developer",
+	jobTitle: "Senior Software Developer",
+	worksFor: { "@type": "Organization", name: "Claxon Business Solutions" },
 	sameAs: [
 		"https://github.com/mtnyoni",
 		"https://linkedin.com/in/tmnyoni",
@@ -26,6 +25,12 @@ const schema = {
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
@@ -55,10 +60,20 @@ const schema = {
 		/>
 	</head>
 	<body class="relative">
-		<Background />
 		<div class="relative z-10 min-h-screen">
+			{
+				Astro.url.pathname !== "/" && (
+					<nav
+						aria-label="Home"
+						class="mx-auto max-w-200 px-4 pt-6 text-sm"
+					>
+						<a href="/" class="text-gray-600 hover:text-gray-950">
+							← Tawanda Nyoni
+						</a>
+					</nav>
+				)
+			}
 			<slot />
 		</div>
-		<SocialMediaIcons />
 	</body>
 </html>

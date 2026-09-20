@@ -1,398 +1,463 @@
 ---
 import BaseLayout from "@layouts/base-layout.astro"
-import portraitUrl from "@assets/portrait-centered.png"
-import lineChartImg from "@assets/line-chart.png"
-import samsungNotifications from "@assets/samsung-notifications.mp4"
 import HeroTitle from "@components/hero-title"
+import chart from "@assets/line-chart.png"
+import notifications from "@assets/samsung-notifications.mp4"
+import notificationPoster from "@assets/samsung-notifications-preview.jpg"
 import { projects } from "@utils/constants"
-import { ArrowUpRight, Code2, Sparkles } from "@lucide/astro"
-
-const experience = [
-	{
-		role: "Software Developer",
-		company: "Claxon Actuaries",
-		period: "2023 — now",
-		description:
-			"Building Python and FastAPI systems, React interfaces, and AWS infrastructure with a focus on useful, dependable products.",
-	},
-	{
-		role: "Independent Developer",
-		company: "Freelance",
-		period: "2022 — now",
-		description:
-			"Designing and shipping web products across TypeScript, Go, React, Figma, GitHub, and VPS infrastructure.",
-	},
-]
+import { ArrowUpRight } from "@lucide/astro"
+import ProjectIcon from "@components/project-icon.astro"
 ---
 
 <BaseLayout>
-	<div
-		id="top"
-		class="min-h-screen bg-[#f3f0e9] text-[#20201e] selection:bg-[#20201e] selection:text-[#f3f0e9]"
-	>
-		<main class="mx-auto w-full max-w-4xl px-4 sm:px-5">
-			<section
-				class="grid grid-cols-1 py-10 md:grid-cols-[minmax(0,1fr)_minmax(220px,0.38fr)] md:gap-x-8 md:py-14"
-				aria-labelledby="intro-heading"
-			>
-				<HeroTitle client:load />
+	<main id="top" class="portfolio">
+		<header class="intro">
+			<HeroTitle client:load />
+			<div class="intro-copy">
+				<p>
+					I’m <strong>Tawanda M. Nyoni</strong>, Software Engineer and
+					UI/UX Designer. I care <br /> about how products look, feel, and
+					work.
+				</p>
+				<p>
+					<strong>Senior Software Developer</strong> at <strong
+						>Claxon Business Solutions</strong
+					>. Working across <br /> engineering and design to make complex
+					things feel simple.
+				</p>
+				<p>
+					Linux fanatic. Writing Odin, Go, Python, and TypeScript.
+					Always exploring.
+				</p>
+			</div>
+			<nav aria-label="Portfolio sections">
+				<a href="#work">Work</a>
+				<a href="#craft">Craft</a>
+				<a href="#writing">Writing</a>
+				<span aria-hidden="true">|</span>
+				<a href="#connect">Connect <ArrowUpRight size={13} /></a>
+			</nav>
+		</header>
 
-				<div
-					class="max-w-xl text-[clamp(1.12rem,2vw,1.35rem)] leading-[1.55]"
-				>
-					<p>
-						I’m <strong class="font-semibold"
-							>Tawanda M. Nyoni</strong
-						>, a software developer and interface designer. I care
-						about how products look, feel, and work.
-					</p>
-				</div>
-
-				<div
-					class="mt-8 self-end border-l border-black/15 pl-4 text-sm leading-relaxed text-[#74716a] md:mt-0"
-				>
-					<span
-						class="mb-3 block text-[0.68rem] font-bold text-[#20201e]"
-					>
-						Currently
-					</span>
-					<p>
-						Senior Software Engineer at Claxon Actuaries, leading
-						software teams and UI/UX design.
-					</p>
-				</div>
-			</section>
-
-			<section
-				id="work"
-				class="scroll-mt-8 py-12 md:py-14"
-				aria-labelledby="work-title"
-			>
-				<div
-					class="mb-8 grid grid-cols-[42px_1fr] items-start md:mb-10 md:grid-cols-[56px_minmax(180px,0.8fr)_minmax(240px,1fr)]"
-				>
-					<p
-						class="text-[0.68rem] font-bold tracking-widest text-[#e25834]"
-					>
-						01
-					</p>
-					<h2
-						id="work-title"
-						class="font-serif text-[clamp(1.6rem,2.5vw,2.25rem)] leading-none font-normal tracking-[-0.035em]"
-					>
-						Selected work
-					</h2>
-					<p
-						class="col-start-2 mt-3 max-w-md text-xs leading-relaxed text-[#74716a] md:col-start-auto md:mt-0 md:justify-self-end"
-					>
-						Products I’ve designed, built, or helped bring into the
-						world.
-					</p>
-				</div>
-
-				<div class="border-t border-black/15">
-					{
-						projects.map((project, index) => (
-							<a
-								class="group grid grid-cols-[30px_1fr_auto] items-center gap-3 border-b border-black/15 py-4 transition-all duration-200 hover:bg-white/40 hover:px-3 sm:grid-cols-[38px_1fr_auto] md:grid-cols-[56px_1fr_auto] md:py-5"
-								href={project.link}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<span class="font-serif text-[0.68rem] text-[#74716a] md:text-xs">
-									{String(index + 1).padStart(2, "0")}
-								</span>
-								<span class="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-6">
-									<strong class="font-serif text-[clamp(1.3rem,2vw,1.75rem)] font-normal tracking-[-0.025em] md:min-w-52">
-										{project.title}
-									</strong>
-									<span class="text-xs text-[#74716a] sm:text-sm">
+		<section id="work" class="section" aria-labelledby="work-title">
+			<h2 id="work-title">Selected work</h2>
+			<div class="section-content project-list">
+				{
+					projects.map((project, index) => (
+						<a
+							class="project-row"
+							href={project.link}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<ProjectIcon
+								kind={index === 0 ? "rental" : "finance"}
+							/>
+							<span class="project-copy">
+								<>
+									<span class="link-title">
+										{project.title}{" "}
+										<ArrowUpRight size={13} />
+									</span>
+									<span class="description">
 										{project.description}
 									</span>
-								</span>
-								<span class="flex items-center gap-5 text-xs text-[#74716a]">
-									<span class="hidden md:inline">
-										{project.year}
-									</span>
-									<ArrowUpRight class="size-5" />
-								</span>
-							</a>
-						))
-					}
-				</div>
-			</section>
-
-			<section
-				id="craft"
-				class="scroll-mt-8 py-12 md:py-14"
-				aria-labelledby="craft-title"
-			>
-				<div
-					class="mb-8 grid grid-cols-[42px_1fr] items-start md:mb-10 md:grid-cols-[56px_minmax(180px,0.8fr)_minmax(240px,1fr)]"
-				>
-					<p
-						class="text-[0.68rem] font-bold tracking-[0.1em] text-[#e25834]"
-					>
-						02
-					</p>
-					<h2
-						id="craft-title"
-						class="font-serif text-[clamp(1.6rem,2.5vw,2.25rem)] leading-none font-normal tracking-[-0.035em]"
-					>
-						Interface studies
-					</h2>
-					<p
-						class="col-start-2 mt-3 max-w-md text-xs leading-relaxed text-[#74716a] md:col-start-auto md:mt-0 md:justify-self-end"
-					>
-						Small explorations in motion, feedback, data, and
-						digital tactility.
-					</p>
-				</div>
-
-				<div class="grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
-					<a
-						class="group overflow-hidden rounded-sm border border-black/15 bg-white/35"
-						href="/crafts/line-chart"
-					>
-						<div
-							class="grid h-48 place-items-center overflow-hidden bg-[#e6e1d8] p-[clamp(1.5rem,4vw,3rem)] sm:h-56 md:h-64"
-						>
-							<img
-								src={lineChartImg.src}
-								alt="A line chart interface study"
-								loading="lazy"
-								class="w-full shadow-[0_24px_65px_rgba(35,32,27,0.14)] transition-transform duration-500 group-hover:scale-[1.025]"
-							/>
-						</div>
-						<div class="relative flex flex-col gap-2 p-4">
-							<span
-								class="flex items-center gap-2 text-[0.68rem] tracking-[0.08em] text-[#74716a] uppercase"
-							>
-								<Sparkles class="size-4" /> Data interaction
+								</>
 							</span>
-							<strong class="font-serif text-xl font-normal">
-								Animated line chart
-							</strong>
-							<ArrowUpRight
-								class="absolute right-4 bottom-4 size-5"
-							/>
-						</div>
-					</a>
+							<span class="year">{project.year}</span>
+						</a>
+					))
+				}
+			</div>
+		</section>
 
-					<a
-						class="group overflow-hidden rounded-sm border border-black/15 bg-white/35"
-						href="/crafts/samsung-notifications"
-					>
-						<div
-							class="grid h-48 place-items-center overflow-hidden bg-[#242321] sm:h-56 md:h-64"
-						>
-							<video
-								src={samsungNotifications}
-								autoplay
-								loop
-								muted
-								playsinline
-								aria-label="Samsung notification interface study"
-								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
-							></video>
-						</div>
-						<div class="relative flex flex-col gap-2 p-4">
-							<span
-								class="flex items-center gap-2 text-[0.68rem] tracking-[0.08em] text-[#74716a] uppercase"
-							>
-								<Code2 class="size-4" /> Motion study
-							</span>
-							<strong class="font-serif text-xl font-normal">
-								Samsung notifications
-							</strong>
-							<ArrowUpRight
-								class="absolute right-4 bottom-4 size-5"
-							/>
-						</div>
-					</a>
-				</div>
-			</section>
-
-			<section
-				id="about"
-				class="scroll-mt-8 py-12 md:py-14"
-				aria-labelledby="about-title"
-			>
-				<div
-					class="mb-8 grid grid-cols-[42px_1fr] items-start md:mb-10 md:grid-cols-[56px_minmax(180px,0.8fr)_minmax(240px,1fr)]"
-				>
-					<p
-						class="text-[0.68rem] font-bold tracking-[0.1em] text-[#e25834]"
-					>
-						03
-					</p>
-					<h2
-						id="about-title"
-						class="font-serif text-[clamp(1.6rem,2.5vw,2.25rem)] leading-none font-normal tracking-[-0.035em]"
-					>
-						A little about me
-					</h2>
-				</div>
-
-				<div class="grid gap-8 md:grid-cols-[14rem_1fr] md:gap-10">
-					<div>
-						<img
-							src={portraitUrl.src}
-							alt="Portrait of Tawanda Nyoni"
-							loading="lazy"
-							class="aspect-2/3 w-full max-w-52 object-cover object-center contrast-[0.94] grayscale md:max-w-56"
-						/>
-						<p
-							class="mt-4 font-serif text-sm text-[#74716a]"
-						>
-							Developer by practice. Designer by instinct.
-						</p>
-					</div>
-
-					<div class="pt-4 leading-relaxed text-[#74716a]">
-						<p
-							class="mb-5 font-serif text-[clamp(1.15rem,1.8vw,1.4rem)] leading-snug tracking-[-0.015em] text-[#20201e]"
-						>
-							I care about the complete experience—from the shape
-							of a database to the timing of a transition.
-						</p>
-						<p>
-							My main tools are Python and TypeScript, with
-							growing experience in Go. I use React and Figma to
-							turn complex product requirements into interfaces
-							that feel clear, fast, and human.
-						</p>
-
-						<div class="mt-8 border-t border-black/15">
-							{
-								experience.map((item) => (
-									<div class="grid grid-cols-[1fr_auto] gap-x-5 gap-y-1 border-b border-black/15 py-3">
-										<div class="flex flex-col">
-											<strong class="text-sm text-[#20201e]">
-												{item.role}
-											</strong>
-											<span class="text-xs">
-												{item.company}
-											</span>
-										</div>
-										<time class="text-xs">
-											{item.period}
-										</time>
-										<p class="col-span-full mt-3 text-sm">
-											{item.description}
-										</p>
-									</div>
-								))
-							}
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section
-				id="writing"
-				class="scroll-mt-8 py-12 md:py-14"
-				aria-labelledby="writing-title"
-			>
-				<div
-					class="mb-8 grid grid-cols-[42px_1fr] items-start md:mb-10 md:grid-cols-[56px_minmax(180px,0.8fr)_minmax(240px,1fr)]"
-				>
-					<p
-						class="text-[0.68rem] font-bold tracking-[0.1em] text-[#e25834]"
-					>
-						04
-					</p>
-					<h2
-						id="writing-title"
-						class="font-serif text-[clamp(1.6rem,2.5vw,2.25rem)] leading-none font-normal tracking-[-0.035em]"
-					>
-						Notes on the work
-					</h2>
-					<p
-						class="col-start-2 mt-3 max-w-md text-xs leading-relaxed text-[#74716a] md:col-start-auto md:mt-0 md:justify-self-end"
-					>
-						Infrequent thoughts about learning, engineering, and
-						making software well.
-					</p>
-				</div>
-
-				<a
-					class="grid grid-cols-[1fr_auto] items-center gap-3 border-y border-black/15 py-4 md:grid-cols-[90px_minmax(240px,1fr)_minmax(200px,0.8fr)_auto] md:gap-5"
-					href="/articles/how-to-learn-a-new-programming-language-or-framework"
-				>
-					<span
-						class="text-[0.68rem] font-bold tracking-[0.09em] text-[#e25834] uppercase"
-					>
-						Learning
-					</span>
-					<strong
-						class="col-start-1 font-serif text-lg font-normal md:col-start-auto md:text-xl"
-					>
-						How to learn a new programming language or framework
-					</strong>
-					<p
-						class="col-start-1 text-sm leading-relaxed text-[#74716a] md:col-start-auto"
-					>
-						A practical guide to learning the deeper ideas—not only
-						the syntax.
-					</p>
-					<ArrowUpRight
-						class="col-start-2 row-span-3 row-start-1 size-5 md:col-start-auto md:row-span-1 md:row-start-auto"
-					/>
-				</a>
-			</section>
-
-			<section
-				id="connect"
-				class="scroll-mt-8 pt-12 pb-10 md:pt-14 md:pb-12"
-			>
-				<p
-					class="text-[0.68rem] font-bold tracking-[0.1em] text-[#e25834]"
-				>
-					05
+		<section id="craft" class="section" aria-labelledby="craft-title">
+			<h2 id="craft-title">Craft</h2>
+			<div class="section-content">
+				<p class="section-intro">
+					Little experiments exploring how designs come about, and
+					laying out my imagination.
 				</p>
-				<h2
-					id="connect-title"
-					class="my-5 max-w-2xl font-serif text-[clamp(2.4rem,5vw,4rem)] leading-none font-normal tracking-[-0.05em]"
-				>
-					Have an interesting problem?
-					<span class="block font-normal text-[#e25834]">Let’s talk.</span>
-				</h2>
+				<div class="studies">
+					<a class="study" href="/crafts/line-chart">
+						<div class="study-visual chart-visual">
+							<img
+								src={chart.src}
+								width={chart.width}
+								height={chart.height}
+								alt="Interactive line chart with a soft green area fill"
+								loading="lazy"
+							/><span class="open-study"
+								><ArrowUpRight size={15} /></span
+							>
+						</div>
+						<div class="study-caption">
+							<h3>Animated line chart</h3><span
+								>Data, with a little life.</span
+							>
+						</div>
+					</a>
+					<div class="study">
+						<div class="study-visual phone-visual">
+							<video
+								id="notification-preview"
+								poster={notificationPoster.src}
+								src={notifications}
+								muted
+								loop
+								playsinline
+								preload="metadata"
+								aria-label="Samsung notification animation preview"
+							></video><button
+								id="preview-toggle"
+								type="button"
+								aria-controls="notification-preview"
+								aria-pressed="false"
+								>Play preview <span aria-hidden="true">▷</span
+								></button
+							>
+						</div>
+						<a
+							class="study-caption"
+							href="/crafts/samsung-notifications"
+							><h3>
+								Samsung notifications <ArrowUpRight size={13} />
+							</h3><span>A study in motion & feedback.</span></a
+						>
+					</div>
+				</div>
+			</div>
+		</section>
 
-				<div class="flex flex-wrap gap-3">
+		<section id="writing" class="section" aria-labelledby="writing-title">
+			<h2 id="writing-title">Writing</h2>
+			<div class="section-content">
+				<a
+					class="writing-link"
+					href="/articles/how-to-learn-a-new-programming-language-or-framework"
+					><span
+						><h3>
+							How to learn a new programming language or framework
+						</h3><p>Looking beyond the syntax.</p></span
+					><ArrowUpRight size={17} /></a
+				>
+			</div>
+		</section>
+
+		<section id="connect" class="section" aria-labelledby="connect-title">
+			<h2 id="connect-title">Elsewhere</h2>
+			<div class="section-content">
+				<p>
+					Have something in mind, or just want to say hello?<br />I’d
+					love to hear from you.
+				</p><div class="social-links">
 					<a
 						href="https://github.com/mtnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-3 rounded-full border border-black/15 px-5 py-3 text-sm transition-colors hover:bg-[#20201e] hover:text-[#f3f0e9]"
-					>
-						GitHub <ArrowUpRight class="size-4" />
-					</a>
-					<a
+						>GitHub <ArrowUpRight size={12} /></a
+					><a
 						href="https://linkedin.com/in/tmnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-3 rounded-full border border-black/15 px-5 py-3 text-sm transition-colors hover:bg-[#20201e] hover:text-[#f3f0e9]"
-					>
-						LinkedIn <ArrowUpRight class="size-4" />
-					</a>
-					<a
+						>LinkedIn <ArrowUpRight size={12} /></a
+					><a
 						href="https://x.com/tmnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex items-center gap-3 rounded-full border border-black/15 px-5 py-3 text-sm transition-colors hover:bg-[#20201e] hover:text-[#f3f0e9]"
+						>X / Twitter <ArrowUpRight size={12} /></a
 					>
-						X / Twitter <ArrowUpRight class="size-4" />
-					</a>
 				</div>
-
-				<footer
-					class="mt-12 flex flex-col items-start justify-between gap-3 border-t border-black/15 pt-4 text-xs tracking-[0.04em] text-[#74716a] uppercase sm:mt-14 sm:flex-row"
-				>
-					<span>© {new Date().getFullYear()} Tawanda M Nyoni</span>
-					<a href="#top">Back to top ↑</a>
-				</footer>
-			</section>
-		</main>
-	</div>
+			</div>
+		</section>
+		<footer>
+			<span>© {new Date().getFullYear()} Tawanda Nyoni</span><a
+				href="#top">Back to top ↑</a
+			>
+		</footer>
+	</main>
 </BaseLayout>
+
+<script>
+	const video = document.querySelector<HTMLVideoElement>(
+		"#notification-preview"
+	)
+	const toggle = document.querySelector<HTMLButtonElement>("#preview-toggle")
+	if (video && toggle) {
+		const update = () => {
+			toggle.setAttribute("aria-pressed", String(!video.paused))
+			toggle.innerHTML = video.paused
+				? 'Play preview <span aria-hidden="true">▷</span>'
+				: 'Pause preview <span aria-hidden="true">Ⅱ</span>'
+		}
+		toggle.addEventListener("click", async () => {
+			if (video.paused) {
+				try {
+					await video.play()
+				} catch {
+					toggle.textContent = "Preview unavailable"
+				}
+			} else video.pause()
+		})
+		video.addEventListener("play", update)
+		video.addEventListener("pause", update)
+		document.addEventListener("visibilitychange", () => {
+			if (document.hidden) video.pause()
+		})
+	}
+</script>
+
+<style>
+	.portfolio {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 96px 28px 32px;
+		font-size: 14px;
+		line-height: 1.7;
+		color: #626a6c;
+	}
+	.intro {
+		margin-left: 134px;
+		padding-bottom: 52px;
+	}
+	.intro-copy p + p {
+		margin-top: 18px;
+	}
+	strong {
+		color: #303839;
+		font-weight: 500;
+	}
+	nav {
+		display: flex;
+		gap: 22px;
+		margin-top: 26px;
+		font-size: 12px;
+		color: #41494b;
+	}
+	nav a {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+	nav > span {
+		color: #b5bcbc;
+	}
+	.section {
+		display: grid;
+		grid-template-columns: 110px minmax(0, 1fr);
+		gap: 24px;
+		padding: 30px 0;
+		scroll-margin-top: 32px;
+	}
+	h2 {
+		font-size: 12px;
+		font-weight: 400;
+		color: #7a8284;
+		padding-top: 3px;
+	}
+	.section-content {
+		min-width: 0;
+	}
+	.project-list {
+		margin-top: -10px;
+	}
+	.project-row {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		padding: 12px 10px;
+		margin: 0 -10px;
+		border-radius: 10px;
+		transition: background 0.2s;
+	}
+	.project-row:hover {
+		background: #e8eded;
+	}
+	.project-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+	}
+	.link-title {
+		color: #303839;
+		font-weight: 500;
+		display: flex;
+		gap: 6px;
+		align-items: center;
+	}
+	.link-title svg {
+		color: #8c9596;
+	}
+	.description {
+		font-size: 12px;
+	}
+	.year {
+		margin-left: auto;
+		color: #858d8f;
+		font-size: 11px;
+		font-variant-numeric: tabular-nums;
+	}
+	.section-intro {
+		margin-bottom: 20px;
+		max-width: 410px;
+	}
+	.studies {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+	}
+	.study-visual {
+		height: 200px;
+		position: relative;
+		overflow: hidden;
+		border: 1px solid #dfe5e4;
+		border-radius: 12px;
+	}
+	.chart-visual {
+		display: grid;
+		place-items: center;
+		background: #e7ece9;
+		padding: 18px;
+	}
+	.chart-visual img {
+		width: 100%;
+		border-radius: 5px;
+		box-shadow: 0 8px 24px #35493d12;
+		transition: transform 0.3s;
+	}
+	.study:hover .chart-visual img {
+		transform: translateY(-3px);
+	}
+	.open-study {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		color: #798580;
+	}
+	.phone-visual {
+		background: #e6e9ed;
+	}
+	.phone-visual video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	#preview-toggle {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		display: flex;
+		gap: 14px;
+		align-items: center;
+		padding: 5px 9px;
+		border-radius: 6px;
+		color: #394142;
+		background: #ffffffed;
+		box-shadow: 0 1px 4px #0001;
+		font-size: 10px;
+		cursor: pointer;
+	}
+	.study-caption {
+		display: block;
+		padding-top: 12px;
+	}
+	h3 {
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 1.55;
+		color: #303839;
+	}
+	.study-caption h3 {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+	.study-caption > span {
+		font-size: 11px;
+	}
+	.writing-link {
+		display: flex;
+		gap: 20px;
+		align-items: center;
+	}
+	.writing-link > svg {
+		flex-shrink: 0;
+		margin-left: auto;
+	}
+	.writing-link p {
+		font-size: 12px;
+		margin-top: 5px;
+	}
+	.social-links {
+		display: flex;
+		gap: 22px;
+		flex-wrap: wrap;
+		margin-top: 20px;
+	}
+	.social-links a {
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		color: #414b4c;
+		font-size: 12px;
+	}
+	footer {
+		margin: 40px 0 0 134px;
+		padding-top: 20px;
+		border-top: 1px solid #dce2e2;
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+		font-size: 10px;
+		color: #828b8c;
+	}
+	a {
+		transition: color 0.2s;
+	}
+	a:hover {
+		color: #151c1d;
+	}
+	@media (max-width: 640px) {
+		.portfolio {
+			padding: 48px 24px 24px;
+			max-width: 500px;
+		}
+		.intro {
+			margin-left: 0;
+			padding-bottom: 22px;
+		}
+		.section {
+			grid-template-columns: 1fr;
+			gap: 17px;
+			padding: 26px 0;
+		}
+		h2 {
+			color: #414b4c;
+			font-weight: 500;
+		}
+		footer {
+			margin-left: 0;
+		}
+		.study-visual {
+			height: 180px;
+		}
+	}
+	@media (max-width: 380px) {
+		.studies {
+			grid-template-columns: 1fr;
+		}
+		.study-visual {
+			height: 220px;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		a,
+		.project-row,
+		.chart-visual img {
+			transition: none;
+		}
+		.study:hover .chart-visual img {
+			transform: none;
+		}
+	}
+</style>

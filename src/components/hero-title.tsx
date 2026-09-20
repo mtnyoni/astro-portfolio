@@ -20,18 +20,18 @@ export default function HeroTitle() {
 	return (
 		<h1
 			id="intro-heading"
-			className="col-span-full mb-8 max-w-3xl font-serif text-[clamp(2.4rem,10vw,3.5rem)] leading-[0.98] font-normal tracking-[-0.055em] md:mb-10 md:text-[clamp(2.75rem,6vw,4.5rem)]"
+			className="mb-7 font-sans font-normal text-[clamp(2.25rem,5vw,2rem)] leading-[1.1] tracking-[-0.055em] text-[#303839]"
 		>
-			I build software that feels{" "}
-			<span className="relative inline-grid overflow-hidden align-bottom text-[#e25834]">
-				<span
+			<div>I build software that feels</div>
+			<div className="relative inline-grid overflow-hidden align-bottom text-[#11b8d0]">
+				<div
 					aria-hidden="true"
 					className="invisible col-start-1 row-start-1 whitespace-nowrap"
 				>
 					intentional.
-				</span>
+				</div>
 				<AnimatePresence initial={false} mode="popLayout">
-					<motion.span
+					<motion.div
 						key={words[activeWord]}
 						initial={
 							prefersReducedMotion
@@ -51,9 +51,9 @@ export default function HeroTitle() {
 						className="col-start-1 row-start-1 block whitespace-nowrap"
 					>
 						{words[activeWord]}
-					</motion.span>
+					</motion.div>
 				</AnimatePresence>
-			</span>
+			</div>
 		</h1>
 	)
 }

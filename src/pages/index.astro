@@ -10,17 +10,25 @@ import ProjectIcon from "@components/project-icon.astro"
 ---
 
 <BaseLayout>
-	<main id="top" class="portfolio">
-		<header class="intro">
+	<main
+		id="top"
+		class="mx-auto max-w-[760px] px-7 pt-24 pb-8 text-[14px] leading-[1.7] text-[#626a6c] [@media(max-width:640px)]:max-w-[500px] [@media(max-width:640px)]:px-6 [@media(max-width:640px)]:pt-12 [@media(max-width:640px)]:pb-6"
+	>
+		<header
+			class="ml-[134px] pb-[52px] [@media(max-width:640px)]:ml-0 [@media(max-width:640px)]:pb-[22px]"
+		>
 			<HeroTitle client:load />
-			<div class="intro-copy">
+			<div class="[&_p+p]:mt-[18px]">
 				<p>
-					I’m <strong>Tawanda M. Nyoni</strong>, Software Engineer and
-					UI/UX Designer. I care <br /> about how products look, feel, and
-					work.
+					I’m <strong class="font-medium text-mist-700"
+						>Tawanda M. Nyoni</strong
+					>, Software Engineer and UI/UX Designer. I care <br /> about how
+					products look, feel, and work.
 				</p>
 				<p>
-					<strong>Senior Software Developer</strong> at <strong
+					<strong class="font-medium text-mist-700"
+						>Senior Software Developer</strong
+					> at <strong class="font-medium text-mist-700"
 						>Claxon Business Solutions</strong
 					>. Working across <br /> engineering and design to make complex
 					things feel simple.
@@ -30,22 +38,46 @@ import ProjectIcon from "@components/project-icon.astro"
 					Always exploring.
 				</p>
 			</div>
-			<nav aria-label="Portfolio sections">
-				<a href="#work">Work</a>
-				<a href="#craft">Craft</a>
-				<a href="#writing">Writing</a>
+			<nav
+				class="mt-[26px] flex gap-[22px] text-[12px] text-[#41494b] [&_a]:flex [&_a]:items-center [&_a]:gap-1 [&>span]:text-[#b5bcbc]"
+				aria-label="Portfolio sections"
+			>
+				<a
+					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+					href="#work">Work</a
+				>
+				<a
+					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+					href="#craft">Craft</a
+				>
+				<a
+					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+					href="#writing">Writing</a
+				>
 				<span aria-hidden="true">|</span>
-				<a href="#connect">Connect <ArrowUpRight size={13} /></a>
+				<a
+					class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+					href="#connect">Connect <ArrowUpRight size={13} /></a
+				>
 			</nav>
 		</header>
 
-		<section id="work" class="section" aria-labelledby="work-title">
-			<h2 id="work-title">Selected work</h2>
-			<div class="section-content project-list">
+		<section
+			id="work"
+			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-[30px] [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			aria-labelledby="work-title"
+		>
+			<h2
+				class="pt-[3px] text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				id="work-title"
+			>
+				Selected work
+			</h2>
+			<div class="-mt-2.5 min-w-0">
 				{
 					projects.map((project, index) => (
 						<a
-							class="project-row"
+							class="-mx-2.5 flex items-center gap-3.5 rounded-[10px] px-2.5 py-3 transition-colors duration-200 ease-[ease] hover:bg-[#e8eded] hover:text-[#151c1d] motion-reduce:transition-none"
 							href={project.link}
 							target="_blank"
 							rel="noopener noreferrer"
@@ -53,53 +85,80 @@ import ProjectIcon from "@components/project-icon.astro"
 							<ProjectIcon
 								kind={index === 0 ? "rental" : "finance"}
 							/>
-							<span class="project-copy">
+							<span class="flex flex-col gap-px">
 								<>
-									<span class="link-title">
+									<span class="flex items-center gap-1.5 font-medium text-mist-700 [&_svg]:text-[#8c9596]">
 										{project.title}{" "}
 										<ArrowUpRight size={13} />
 									</span>
-									<span class="description">
+									<span class="text-[12px]">
 										{project.description}
 									</span>
 								</>
 							</span>
-							<span class="year">{project.year}</span>
+							<span class="ml-auto text-[11px] text-[#858d8f] tabular-nums">
+								{project.year}
+							</span>
 						</a>
 					))
 				}
 			</div>
 		</section>
 
-		<section id="craft" class="section" aria-labelledby="craft-title">
-			<h2 id="craft-title">Craft</h2>
-			<div class="section-content">
-				<p class="section-intro">
+		<section
+			id="craft"
+			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-[30px] [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			aria-labelledby="craft-title"
+		>
+			<h2
+				class="pt-[3px] text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				id="craft-title"
+			>
+				Craft
+			</h2>
+			<div class="min-w-0">
+				<p class="mb-5 max-w-[410px]">
 					Little experiments exploring how designs come about, and
 					laying out my imagination.
 				</p>
-				<div class="studies">
-					<a class="study" href="/crafts/line-chart">
-						<div class="study-visual chart-visual">
+				<div
+					class="grid grid-cols-2 gap-4 [@media(max-width:380px)]:grid-cols-1"
+				>
+					<a
+						class="group transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
+						href="/crafts/line-chart"
+					>
+						<div
+							class="relative grid h-[200px] place-items-center overflow-hidden rounded-xl border border-[#dfe5e4] bg-[#e7ece9] p-[18px] [@media(max-width:380px)]:h-[220px] [@media(max-width:640px)]:h-[180px]"
+						>
 							<img
+								class="w-full rounded-[5px] shadow-[0_8px_24px_#35493d12] transition-transform duration-300 ease-[ease] motion-safe:group-hover:-translate-y-[3px] motion-reduce:transition-none"
 								src={chart.src}
 								width={chart.width}
 								height={chart.height}
 								alt="Interactive line chart with a soft green area fill"
 								loading="lazy"
-							/><span class="open-study"
+							/><span
+								class="absolute right-2.5 bottom-2.5 text-[#798580]"
 								><ArrowUpRight size={15} /></span
 							>
 						</div>
-						<div class="study-caption">
-							<h3>Animated line chart</h3><span
-								>Data, with a little life.</span
+						<div
+							class="block pt-3 [&_h3]:flex [&_h3]:items-center [&_h3]:gap-[5px] [&>span]:text-[11px]"
+						>
+							<h3
+								class="text-[13px] leading-[1.55] font-medium text-mist-700"
 							>
+								Animated line chart
+							</h3><span>Data, with a little life.</span>
 						</div>
 					</a>
-					<div class="study">
-						<div class="study-visual phone-visual">
+					<div class="group">
+						<div
+							class="relative h-[200px] overflow-hidden rounded-xl border border-[#dfe5e4] bg-[#e6e9ed] [@media(max-width:380px)]:h-[220px] [@media(max-width:640px)]:h-[180px]"
+						>
 							<video
+								class="size-full object-cover"
 								id="notification-preview"
 								poster={notificationPoster.src}
 								src={notifications}
@@ -109,6 +168,7 @@ import ProjectIcon from "@components/project-icon.astro"
 								preload="metadata"
 								aria-label="Samsung notification animation preview"
 							></video><button
+								class="absolute bottom-2.5 left-2.5 flex cursor-pointer items-center gap-3.5 rounded-md bg-[#ffffffed] px-[9px] py-[5px] text-[10px] text-[#394142] shadow-[0_1px_4px_#0001]"
 								id="preview-toggle"
 								type="button"
 								aria-controls="notification-preview"
@@ -118,9 +178,11 @@ import ProjectIcon from "@components/project-icon.astro"
 							>
 						</div>
 						<a
-							class="study-caption"
+							class="block pt-3 transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none [&_h3]:flex [&_h3]:items-center [&_h3]:gap-[5px] [&>span]:text-[11px]"
 							href="/crafts/samsung-notifications"
-							><h3>
+							><h3
+								class="text-[13px] leading-[1.55] font-medium text-mist-700"
+							>
 								Samsung notifications <ArrowUpRight size={13} />
 							</h3><span>A study in motion & feedback.</span></a
 						>
@@ -129,51 +191,91 @@ import ProjectIcon from "@components/project-icon.astro"
 			</div>
 		</section>
 
-		<section id="writing" class="section" aria-labelledby="writing-title">
-			<h2 id="writing-title">Writing</h2>
-			<div class="section-content">
+		<section
+			id="writing"
+			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			aria-labelledby="writing-title"
+		>
+			<h2
+				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				id="writing-title"
+			>
+				Writing
+			</h2>
+			<div class="min-w-0">
+				<p class="mb-2 max-w-102.5">
+					My two cents on how good software is engineered.
+				</p>
 				<a
-					class="writing-link"
+					class="flex items-center gap-5 transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none [&_p]:mt-[5px] [&_p]:text-[12px] [&>svg]:ml-auto [&>svg]:shrink-0"
 					href="/articles/how-to-learn-a-new-programming-language-or-framework"
-					><span
-						><h3>
-							How to learn a new programming language or framework
-						</h3><p>Looking beyond the syntax.</p></span
-					><ArrowUpRight size={17} /></a
 				>
+					<div class="-space-y-1.5">
+						<h3
+							class="text-sm leading-[1.55] font-medium text-mist-700"
+						>
+							How to learn a new programming language or framework
+						</h3>
+						<p>Looking beyond the syntax.</p>
+					</div>
+					<ArrowUpRight size={17} />
+				</a>
 			</div>
 		</section>
 
-		<section id="connect" class="section" aria-labelledby="connect-title">
-			<h2 id="connect-title">Elsewhere</h2>
-			<div class="section-content">
+		<section
+			id="connect"
+			class="grid scroll-mt-8 grid-cols-[110px_minmax(0,1fr)] gap-6 py-7.5 [@media(max-width:640px)]:grid-cols-1 [@media(max-width:640px)]:gap-[17px] [@media(max-width:640px)]:py-[26px]"
+			aria-labelledby="connect-title"
+		>
+			<h2
+				class="pt-0.75 text-[12px] font-normal text-[#7a8284] [@media(max-width:640px)]:font-medium [@media(max-width:640px)]:text-[#414b4c]"
+				id="connect-title"
+			>
+				Elsewhere
+			</h2>
+			<div class="min-w-0">
 				<p>
-					Have something in mind, or just want to say hello?<br />I’d
-					love to hear from you.
-				</p><div class="social-links">
+					Have something in mind, or big ideas that need to be turned
+					<br /> into reality? Hit me up.
+				</p>
+				<div
+					class="mt-3 flex flex-wrap gap-5.5 [&_a]:flex [&_a]:items-center [&_a]:gap-1.5 [&_a]:text-[12px] [&_a]:text-[#414b4c] [&_a:hover]:text-[#151c1d]"
+				>
 					<a
+						class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
 						href="https://github.com/mtnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
-						>GitHub <ArrowUpRight size={12} /></a
-					><a
+					>
+						GitHub
+						<ArrowUpRight size={12} />
+					</a>
+					<a
+						class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
 						href="https://linkedin.com/in/tmnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
-						>LinkedIn <ArrowUpRight size={12} /></a
-					><a
+					>
+						LinkedIn
+						<ArrowUpRight size={12} />
+					</a>
+					<a
+						class="transition-colors duration-200 ease-[ease] hover:text-[#151c1d] motion-reduce:transition-none"
 						href="https://x.com/tmnyoni"
 						target="_blank"
 						rel="noopener noreferrer"
-						>X / Twitter <ArrowUpRight size={12} /></a
 					>
+						X.com
+						<ArrowUpRight size={12} />
+					</a>
 				</div>
 			</div>
 		</section>
-		<footer>
-			<span>© {new Date().getFullYear()} Tawanda Nyoni</span><a
-				href="#top">Back to top ↑</a
-			>
+		<footer
+			class="mt-10 ml-33.5 flex justify-between gap-4 border-t border-[#dce2e2] pt-5 text-[10px] text-[#828b8c] [@media(max-width:640px)]:ml-0"
+		>
+			<span>© {new Date().getFullYear()} Tawanda Nyoni</span>
 		</footer>
 	</main>
 </BaseLayout>
@@ -206,258 +308,3 @@ import ProjectIcon from "@components/project-icon.astro"
 		})
 	}
 </script>
-
-<style>
-	.portfolio {
-		max-width: 760px;
-		margin: 0 auto;
-		padding: 96px 28px 32px;
-		font-size: 14px;
-		line-height: 1.7;
-		color: #626a6c;
-	}
-	.intro {
-		margin-left: 134px;
-		padding-bottom: 52px;
-	}
-	.intro-copy p + p {
-		margin-top: 18px;
-	}
-	strong {
-		color: #303839;
-		font-weight: 500;
-	}
-	nav {
-		display: flex;
-		gap: 22px;
-		margin-top: 26px;
-		font-size: 12px;
-		color: #41494b;
-	}
-	nav a {
-		display: flex;
-		align-items: center;
-		gap: 4px;
-	}
-	nav > span {
-		color: #b5bcbc;
-	}
-	.section {
-		display: grid;
-		grid-template-columns: 110px minmax(0, 1fr);
-		gap: 24px;
-		padding: 30px 0;
-		scroll-margin-top: 32px;
-	}
-	h2 {
-		font-size: 12px;
-		font-weight: 400;
-		color: #7a8284;
-		padding-top: 3px;
-	}
-	.section-content {
-		min-width: 0;
-	}
-	.project-list {
-		margin-top: -10px;
-	}
-	.project-row {
-		display: flex;
-		align-items: center;
-		gap: 14px;
-		padding: 12px 10px;
-		margin: 0 -10px;
-		border-radius: 10px;
-		transition: background 0.2s;
-	}
-	.project-row:hover {
-		background: #e8eded;
-	}
-	.project-copy {
-		display: flex;
-		flex-direction: column;
-		gap: 1px;
-	}
-	.link-title {
-		color: #303839;
-		font-weight: 500;
-		display: flex;
-		gap: 6px;
-		align-items: center;
-	}
-	.link-title svg {
-		color: #8c9596;
-	}
-	.description {
-		font-size: 12px;
-	}
-	.year {
-		margin-left: auto;
-		color: #858d8f;
-		font-size: 11px;
-		font-variant-numeric: tabular-nums;
-	}
-	.section-intro {
-		margin-bottom: 20px;
-		max-width: 410px;
-	}
-	.studies {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 16px;
-	}
-	.study-visual {
-		height: 200px;
-		position: relative;
-		overflow: hidden;
-		border: 1px solid #dfe5e4;
-		border-radius: 12px;
-	}
-	.chart-visual {
-		display: grid;
-		place-items: center;
-		background: #e7ece9;
-		padding: 18px;
-	}
-	.chart-visual img {
-		width: 100%;
-		border-radius: 5px;
-		box-shadow: 0 8px 24px #35493d12;
-		transition: transform 0.3s;
-	}
-	.study:hover .chart-visual img {
-		transform: translateY(-3px);
-	}
-	.open-study {
-		position: absolute;
-		right: 10px;
-		bottom: 10px;
-		color: #798580;
-	}
-	.phone-visual {
-		background: #e6e9ed;
-	}
-	.phone-visual video {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-	#preview-toggle {
-		position: absolute;
-		bottom: 10px;
-		left: 10px;
-		display: flex;
-		gap: 14px;
-		align-items: center;
-		padding: 5px 9px;
-		border-radius: 6px;
-		color: #394142;
-		background: #ffffffed;
-		box-shadow: 0 1px 4px #0001;
-		font-size: 10px;
-		cursor: pointer;
-	}
-	.study-caption {
-		display: block;
-		padding-top: 12px;
-	}
-	h3 {
-		font-size: 13px;
-		font-weight: 500;
-		line-height: 1.55;
-		color: #303839;
-	}
-	.study-caption h3 {
-		display: flex;
-		align-items: center;
-		gap: 5px;
-	}
-	.study-caption > span {
-		font-size: 11px;
-	}
-	.writing-link {
-		display: flex;
-		gap: 20px;
-		align-items: center;
-	}
-	.writing-link > svg {
-		flex-shrink: 0;
-		margin-left: auto;
-	}
-	.writing-link p {
-		font-size: 12px;
-		margin-top: 5px;
-	}
-	.social-links {
-		display: flex;
-		gap: 22px;
-		flex-wrap: wrap;
-		margin-top: 20px;
-	}
-	.social-links a {
-		display: flex;
-		gap: 6px;
-		align-items: center;
-		color: #414b4c;
-		font-size: 12px;
-	}
-	footer {
-		margin: 40px 0 0 134px;
-		padding-top: 20px;
-		border-top: 1px solid #dce2e2;
-		display: flex;
-		justify-content: space-between;
-		gap: 16px;
-		font-size: 10px;
-		color: #828b8c;
-	}
-	a {
-		transition: color 0.2s;
-	}
-	a:hover {
-		color: #151c1d;
-	}
-	@media (max-width: 640px) {
-		.portfolio {
-			padding: 48px 24px 24px;
-			max-width: 500px;
-		}
-		.intro {
-			margin-left: 0;
-			padding-bottom: 22px;
-		}
-		.section {
-			grid-template-columns: 1fr;
-			gap: 17px;
-			padding: 26px 0;
-		}
-		h2 {
-			color: #414b4c;
-			font-weight: 500;
-		}
-		footer {
-			margin-left: 0;
-		}
-		.study-visual {
-			height: 180px;
-		}
-	}
-	@media (max-width: 380px) {
-		.studies {
-			grid-template-columns: 1fr;
-		}
-		.study-visual {
-			height: 220px;
-		}
-	}
-	@media (prefers-reduced-motion: reduce) {
-		a,
-		.project-row,
-		.chart-visual img {
-			transition: none;
-		}
-		.study:hover .chart-visual img {
-			transform: none;
-		}
-	}
-</style>

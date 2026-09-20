@@ -5,6 +5,4 @@ pubDate: 2026-09-20
 ---
 
 ## Introduction
-In the age of Ai, everyone seems to be a Software Engineer. Because with a couple of prompts they are able to create something out of thin air. It gets better if you have a little knowledge of what you are doing. So here I am going to have a little discussion on what I think it means to be a good software developer in the age of AI.
-
-What
+In the age of AI, everyone seems to be a software engineer. With a couple of prompts, they can create something out of thin air, and it gets even better if you have a little knowledge of what you are doing. So here, I am going to have a short discussion about what I think it means to be a good software developer in the age of AI.

@@ -1,16 +1,19 @@
 ---
 import { SamsungPhone } from "@components/samsung-phone-craft"
 import CraftsLayout from "@layouts/crafts-layout.astro"
-import { CornerUpLeftIcon } from "@lucide/astro"
 ---
 
 <CraftsLayout>
 	<div class="text-lg font-medium">Samsung Notifications</div>
-	<SamsungPhone client:load />
-	<div class="flex items-center justify-between py-8">
-		<a href="/crafts/line-chart" class="block">
-			<div class="text-gray-600">Previous</div>
-			<div class="text-sm">Line chart</div>
-		</a>
+	<div class="border-border mt-4 h-101.5 overflow-hidden rounded-3xl border bg-white px-4 pt-4 sm:h-105 sm:px-8 sm:pt-8">
+		<SamsungPhone client:only="react">
+			<p
+				slot="fallback"
+				role="status"
+				class="text-body-copy text-center text-xs"
+			>
+				Loading notifications…
+			</p>
+		</SamsungPhone>
 	</div>
 </CraftsLayout>

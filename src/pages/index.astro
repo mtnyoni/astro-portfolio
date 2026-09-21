@@ -142,10 +142,10 @@ import ProjectIcon from "@components/project-icon.astro"
 						href="/crafts/line-chart"
 					>
 						<div
-							class="bg-chart-surface max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl max-sm:h-45"
+							class="max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl border border-[#c9d0d4] bg-chart-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#283d4626] max-sm:h-45"
 						>
 							<div
-								class="absolute inset-1 overflow-hidden rounded-lg"
+								class="absolute inset-0.75 overflow-hidden rounded-lg"
 							>
 								<img
 									class="ease-standard h-full w-full rounded-lg object-cover transition-transform duration-300 motion-safe:group-hover:scale-105 motion-reduce:transition-none"
@@ -167,10 +167,10 @@ import ProjectIcon from "@components/project-icon.astro"
 					</a>
 					<div class="group">
 						<div
-							class="border-preview-border bg-video-surface max-xs:h-55 relative h-50 overflow-hidden rounded-xl border max-sm:h-45"
+							class="max-xs:h-55 relative h-50 overflow-hidden rounded-xl border border-[#c9d0d4] bg-video-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#283d4626] max-sm:h-45"
 						>
 							<div
-								class="absolute inset-1 overflow-hidden rounded-lg"
+								class="absolute inset-0.75 overflow-hidden rounded-lg"
 							>
 								<video
 									class="size-full rounded-lg object-cover"
@@ -183,8 +183,13 @@ import ProjectIcon from "@components/project-icon.astro"
 									preload="metadata"
 									aria-label="Samsung notification animation preview"
 								></video>
+								<a
+									class="absolute inset-0 rounded-lg focus-visible:-outline-offset-2"
+									href="/crafts/samsung-notifications"
+									aria-label="View Samsung notifications craft"
+								></a>
 								<button
-									class="bg-preview-control text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 flex cursor-pointer items-center gap-3.5 rounded-md px-2.25 py-1.25"
+									class="bg-preview-control text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 z-10 flex cursor-pointer items-center gap-3.5 rounded-md px-2.25 py-1.25"
 									id="preview-toggle"
 									type="button"
 									aria-controls="notification-preview"
@@ -314,7 +319,8 @@ import ProjectIcon from "@components/project-icon.astro"
 				? 'Play preview <span aria-hidden="true">▷</span>'
 				: 'Pause preview <span aria-hidden="true">Ⅱ</span>'
 		}
-		toggle.addEventListener("click", async () => {
+		toggle.addEventListener("click", async (e) => {
+			e.stopPropagation()
 			if (video.paused) {
 				try {
 					await video.play()

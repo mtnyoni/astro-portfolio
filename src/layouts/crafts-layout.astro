@@ -1,6 +1,18 @@
 ---
 import BaseLayout from "@layouts/base-layout.astro"
 import { ArrowLeftIcon } from "@lucide/astro"
+import chart from "@assets/line-chart.png"
+import notificationPoster from "@assets/samsung-notifications-preview.jpg"
+
+const crafts = [
+	{ title: "Animated line chart", href: "/crafts/line-chart", image: chart },
+	{
+		title: "Samsung notifications",
+		href: "/crafts/samsung-notifications",
+		image: notificationPoster,
+	},
+]
+const currentPath = Astro.url.pathname.replace(/\/$/, "")
 ---
 
 <BaseLayout>
@@ -15,5 +27,40 @@ import { ArrowLeftIcon } from "@lucide/astro"
 			</a>
 		</div>
 		<slot />
+		<nav class="mt-8 pb-8" aria-label="Browse crafts">
+			<h2 class="mb-3 text-xs font-medium text-mist-500">All crafts</h2>
+			<div class="flex snap-x snap-proximity gap-3 overflow-x-auto p-1 pb-3">
+				{crafts.map((craft) => (
+					<a
+						href={craft.href}
+						aria-current={
+							currentPath === craft.href ? "page" : undefined
+						}
+						class="group ease-standard w-40 shrink-0 snap-start rounded-xl text-mist-500 transition-colors hover:text-link-hover motion-reduce:transition-none"
+					>
+						<div
+							class:list={[
+								"relative h-28 overflow-hidden rounded-xl border bg-chart-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#283d4626]",
+								currentPath === craft.href
+									? "border-primary"
+									: "border-[#c9d0d4]",
+							]}
+						>
+							<div class="absolute inset-0.75 overflow-hidden rounded-lg">
+								<img
+									src={craft.image.src}
+									width={craft.image.width}
+									height={craft.image.height}
+									alt=""
+									loading="lazy"
+									class="size-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-105 motion-reduce:transition-none"
+								/>
+							</div>
+						</div>
+						<span class="mt-1.5 block text-xs">{craft.title}</span>
+					</a>
+				))}
+			</div>
+		</nav>
 	</section>
 </BaseLayout>

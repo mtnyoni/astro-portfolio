@@ -20,7 +20,7 @@ function SamsungPhone() {
 	const [open, setOpen] = useState(false)
 
 	return (
-		<section className="relative my-[1dvh] h-[85dvh] max-w-sm rounded-3xl border-10 border-gray-900 bg-white sm:mx-auto">
+		<section className="relative mx-auto h-160 w-full max-w-sm rounded-3xl border-10 border-gray-900 bg-white">
 			<header className="mt-1 flex h-8 items-center justify-between gap-2 px-2 text-gray-700">
 				<div className="flex items-center gap-2">
 					<div className="font-bold">18:42</div>
@@ -36,7 +36,7 @@ function SamsungPhone() {
 				</div>
 				<div
 					aria-label="camera"
-					className="absolute left-1/2 flex justify-center"
+					className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 justify-center"
 				>
 					<div className="grid size-4 place-items-center rounded-full bg-black">
 						<div className="size-2 rounded-full bg-gray-900" />
@@ -63,7 +63,7 @@ function NotificationPanel({
 	const panelRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
-		function handleClick(e: MouseEvent) {
+		function handleClick(e: PointerEvent) {
 			if (!panelRef.current) return
 
 			if (open && !panelRef.current.contains(e.target as Node)) {
@@ -71,8 +71,8 @@ function NotificationPanel({
 			}
 		}
 
-		document.addEventListener("mousedown", handleClick)
-		return () => document.removeEventListener("mousedown", handleClick)
+		document.addEventListener("pointerdown", handleClick)
+		return () => document.removeEventListener("pointerdown", handleClick)
 	}, [open, setOpen])
 
 	return (
@@ -80,6 +80,9 @@ function NotificationPanel({
 			{!open && (
 				<div className="relative flex items-center">
 					<button
+						type="button"
+						aria-label="Open notifications"
+						aria-expanded={open}
 						onClick={() => setOpen((o) => !o)}
 						className="z-20 inline-flex cursor-pointer items-center justify-between gap-1 rounded-full bg-slate-200 px-1.5 py-0.5"
 					>
@@ -100,7 +103,7 @@ function NotificationPanel({
 							transformOrigin: "top left",
 						}}
 						exit={{ opacity: 0, y: -10, scale: 0.4 }}
-						className="absolute top-9 isolate z-20 -ml-13.5 w-[calc(100%-0.6rem)] sm:w-89"
+						className="absolute inset-x-1 top-9 isolate z-20"
 					>
 						<GoogleSoccerScores
 							selected={selected}

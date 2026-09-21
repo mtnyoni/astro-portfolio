@@ -41,7 +41,7 @@ const formatDate = (date: Date) =>
 		<ol>
 			{
 				posts.map((post) => (
-					<li class="sm:grid-cols-portfolio before:bg-separator relative grid gap-1 pb-9 before:absolute before:top-2.5 before:left-[3px] before:h-full before:w-px after:absolute after:top-1.5 after:left-0 after:size-[7px] after:rounded-full after:bg-mist-500 last:pb-0 last:before:hidden sm:gap-6">
+					<li class="sm:grid-cols-portfolio before:bg-separator after:size-i.75 relative grid gap-1 pb-9 before:absolute before:top-2.5 before:left-0.75 before:h-full before:w-px after:absolute after:top-1.5 after:left-0 after:rounded-full after:bg-mist-500 last:pb-0 last:before:hidden sm:gap-6">
 						<time
 							class="text-section-label pt-0.75 pl-5 text-xs tabular-nums"
 							datetime={post.data.pubDate.toISOString()}

@@ -94,22 +94,18 @@ import ProjectIcon from "@components/project-icon.astro"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<ProjectIcon
-								kind={index === 0 ? "rental" : "finance"}
-							/>
+							<ProjectIcon kind={project.tag} />
 							<span class="flex flex-col gap-px">
-								<>
-									<span class="flex items-center gap-1.5 font-medium text-mist-700">
-										{project.title}{" "}
-										<ArrowUpRight
-											class="text-link-icon"
-											size={13}
-										/>
-									</span>
-									<span class="leading-inherit text-xs">
-										{project.description}
-									</span>
-								</>
+								<span class="flex items-center gap-1.5 font-medium text-mist-700">
+									{project.title}{" "}
+									<ArrowUpRight
+										class="text-link-icon"
+										size={13}
+									/>
+								</span>
+								<span class="leading-inherit text-xs">
+									{project.description}
+								</span>
 							</span>
 							<span class="text-caption text-metadata ml-auto tabular-nums">
 								{project.year}
@@ -142,7 +138,7 @@ import ProjectIcon from "@components/project-icon.astro"
 						href="/crafts/line-chart"
 					>
 						<div
-							class="max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl border border-mist-300 bg-chart-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
+							class="max-xs:h-55 bg-chart-surface relative grid h-50 place-items-center overflow-hidden rounded-xl border border-mist-300 shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
 						>
 							<div
 								class="absolute inset-0.75 overflow-hidden rounded-lg"
@@ -167,7 +163,7 @@ import ProjectIcon from "@components/project-icon.astro"
 					</a>
 					<div class="group">
 						<div
-							class="max-xs:h-55 relative h-50 overflow-hidden rounded-xl border border-mist-300 bg-video-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
+							class="max-xs:h-55 bg-video-surface relative h-50 overflow-hidden rounded-xl border border-mist-300 shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
 						>
 							<div
 								class="absolute inset-0.75 overflow-hidden rounded-lg"
@@ -189,7 +185,7 @@ import ProjectIcon from "@components/project-icon.astro"
 									aria-label="View Samsung notifications craft"
 								></a>
 								<button
-									class="bg-preview-control border border-mist-200 text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 z-10 flex cursor-pointer items-center gap-3.5 rounded-md px-2.25 py-1.25"
+									class="bg-preview-control text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 z-10 flex cursor-pointer items-center gap-3.5 rounded-md border border-mist-200 px-2.25 py-1.25"
 									id="preview-toggle"
 									type="button"
 									aria-controls="notification-preview"

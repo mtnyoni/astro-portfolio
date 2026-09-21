@@ -3,7 +3,8 @@ export const projects = [
 		title: "RentEazy",
 		description: "Rental property advertising platform.",
 		link: "https://renteazy.co.zw/",
-		year: 2026,
+    year: 2026,
+		tag: "rental"
 	},
 	// {
 	// 	title: "Mizano",
@@ -27,6 +28,7 @@ export const projects = [
 		title: "Good Habits",
 		description: "Financial management application.",
 		link: "https://goodhabits.tmnyoni.site",
-		year: 2023,
+    year: 2023,
+		tag: "finance"
 	},
 ] as const

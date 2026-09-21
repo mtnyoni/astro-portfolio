@@ -142,7 +142,7 @@ import ProjectIcon from "@components/project-icon.astro"
 						href="/crafts/line-chart"
 					>
 						<div
-							class="max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl border border-[#c9d0d4] bg-chart-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#283d4626] max-sm:h-45"
+							class="max-xs:h-55 relative grid h-50 place-items-center overflow-hidden rounded-xl border border-mist-300 bg-chart-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
 						>
 							<div
 								class="absolute inset-0.75 overflow-hidden rounded-lg"
@@ -167,7 +167,7 @@ import ProjectIcon from "@components/project-icon.astro"
 					</a>
 					<div class="group">
 						<div
-							class="max-xs:h-55 relative h-50 overflow-hidden rounded-xl border border-[#c9d0d4] bg-video-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#283d4626] max-sm:h-45"
+							class="max-xs:h-55 relative h-50 overflow-hidden rounded-xl border border-mist-300 bg-video-surface shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
 						>
 							<div
 								class="absolute inset-0.75 overflow-hidden rounded-lg"
@@ -189,7 +189,7 @@ import ProjectIcon from "@components/project-icon.astro"
 									aria-label="View Samsung notifications craft"
 								></a>
 								<button
-									class="bg-preview-control text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 z-10 flex cursor-pointer items-center gap-3.5 rounded-md px-2.25 py-1.25"
+									class="bg-preview-control border border-mist-200 text-micro text-control-copy shadow-preview absolute bottom-2.5 left-2.5 z-10 flex cursor-pointer items-center gap-3.5 rounded-md px-2.25 py-1.25"
 									id="preview-toggle"
 									type="button"
 									aria-controls="notification-preview"
@@ -300,7 +300,7 @@ import ProjectIcon from "@components/project-icon.astro"
 			</div>
 		</section>
 		<footer
-			class="border-footer-border text-micro text-footer-copy mt-10 ml-33.5 flex justify-between gap-4 border-t pt-5 max-sm:ml-0"
+			class="text-micro text-footer-copy mt-3 ml-33.5 flex justify-between gap-4 pt-3 max-sm:ml-0"
 		>
 			<span>© {new Date().getFullYear()} Tawanda Nyoni</span>
 		</footer>
@@ -319,6 +319,7 @@ import ProjectIcon from "@components/project-icon.astro"
 				? 'Play preview <span aria-hidden="true">▷</span>'
 				: 'Pause preview <span aria-hidden="true">Ⅱ</span>'
 		}
+
 		toggle.addEventListener("click", async (e) => {
 			e.stopPropagation()
 			if (video.paused) {
@@ -329,6 +330,7 @@ import ProjectIcon from "@components/project-icon.astro"
 				}
 			} else video.pause()
 		})
+
 		video.addEventListener("play", update)
 		video.addEventListener("pause", update)
 		document.addEventListener("visibilitychange", () => {

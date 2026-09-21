@@ -15,15 +15,15 @@ export default function RotatingMenu() {
 	const getBorderClass = () => {
 		switch (activeSection) {
 			case "home":
-				return "border-l-4 border-gray-400"
+				return "border-l-4 border-mist-400"
 			case "projects":
-				return "border-t-4 border-gray-400"
+				return "border-t-4 border-mist-400"
 			case "craft":
-				return "border-r-4 border-gray-400"
+				return "border-r-4 border-mist-400"
 			case "aboutMe":
-				return "border-b-4 border-gray-400"
+				return "border-b-4 border-mist-400"
 			default:
-				return "border-[#2e2e2e]"
+				return "border-mist-800"
 		}
 	}
 
@@ -34,7 +34,7 @@ export default function RotatingMenu() {
 			>
 				<div className="relative h-80 w-full overflow-hidden rounded-full sm:w-80">
 					<div
-						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-45 border border-gray-500 bg-[#2e2e2e] p-[calc(20rem/6)]"
+						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-45 border border-mist-600 bg-mist-800 p-[calc(20rem/6)]"
 						onMouseEnter={() => handleMouseEnter("projects")}
 						onMouseLeave={handleMouseLeave}
 					>
@@ -48,7 +48,7 @@ export default function RotatingMenu() {
 							strokeWidth="2"
 							strokeLinecap="round"
 							strokeLinejoin="round"
-							className="text-gray-400"
+							className="text-mist-400"
 						>
 							<ellipse cx="12" cy="5" rx="9" ry="3" />
 							<path d="M3 5V19A9 3 0 0 0 21 19V5" />
@@ -57,7 +57,7 @@ export default function RotatingMenu() {
 					</div>
 
 					<div
-						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-135 border border-gray-500 bg-[#2e2e2e] p-[calc(20rem/6)]"
+						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-135 border border-mist-600 bg-mist-800 p-[calc(20rem/6)]"
 						onMouseEnter={() => handleMouseEnter("craft")}
 						onMouseLeave={handleMouseLeave}
 					>
@@ -71,7 +71,7 @@ export default function RotatingMenu() {
 							strokeWidth="2"
 							strokeLinecap="round"
 							strokeLinejoin="round"
-							className="text-gray-400"
+							className="text-mist-400"
 						>
 							<path d="m10.852 14.772-.383.923" />
 							<path d="m10.852 9.228-.383-.923" />
@@ -92,7 +92,7 @@ export default function RotatingMenu() {
 					</div>
 
 					<div
-						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-225 border border-gray-500 bg-[#2e2e2e] p-[calc(20rem/6)]"
+						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-225 border border-mist-600 bg-mist-800 p-[calc(20rem/6)]"
 						onMouseEnter={() => handleMouseEnter("aboutMe")}
 						onMouseLeave={handleMouseLeave}
 					>
@@ -106,7 +106,7 @@ export default function RotatingMenu() {
 							strokeWidth="2"
 							strokeLinecap="round"
 							strokeLinejoin="round"
-							className="text-gray-400"
+							className="text-mist-400"
 						>
 							<circle cx="12" cy="12" r="10" />
 							<line x1="12" x2="12" y1="8" y2="12" />
@@ -115,7 +115,7 @@ export default function RotatingMenu() {
 					</div>
 
 					<div
-						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-315 border border-gray-500 bg-[#2e2e2e] p-[calc(20rem/6)]"
+						className="absolute top-1/2 left-1/2 h-80 w-80 origin-top-left rotate-315 border border-mist-600 bg-mist-800 p-[calc(20rem/6)]"
 						onMouseEnter={() => handleMouseEnter("home")}
 						onMouseLeave={handleMouseLeave}
 					>
@@ -129,14 +129,14 @@ export default function RotatingMenu() {
 							strokeWidth="2"
 							strokeLinecap="round"
 							strokeLinejoin="round"
-							className="text-gray-400"
+							className="text-mist-400"
 						>
 							<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
 							<path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
 						</svg>
 					</div>
 
-					<div className="absolute top-1/2 left-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[hsla(0,0%,100%,0.1)] bg-[#1c1c1c]">
+					<div className="absolute top-1/2 left-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-mist-700 bg-mist-900">
 						<span className="px-2 text-center text-white capitalize">
 							{activeSection === "home"
 								? "home"

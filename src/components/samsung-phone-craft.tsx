@@ -20,8 +20,8 @@ function SamsungPhone() {
 	const [open, setOpen] = useState(false)
 
 	return (
-		<section className="relative mx-auto h-160 w-full max-w-sm rounded-3xl border-10 border-gray-900 bg-white">
-			<header className="mt-1 flex h-8 items-center justify-between gap-2 px-2 text-gray-700">
+		<section className="relative mx-auto h-160 w-full max-w-sm rounded-3xl border-10 border-mist-900 bg-white">
+			<header className="mt-1 flex h-8 items-center justify-between gap-2 px-2 text-mist-700">
 				<div className="flex items-center gap-2">
 					<div className="font-bold">18:42</div>
 					<NotificationPanel open={open} setOpen={setOpen} />
@@ -39,7 +39,7 @@ function SamsungPhone() {
 					className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 justify-center"
 				>
 					<div className="grid size-4 place-items-center rounded-full bg-black">
-						<div className="size-2 rounded-full bg-gray-900" />
+						<div className="size-2 rounded-full bg-mist-900" />
 					</div>
 				</div>
 				<div className="flex items-center gap-2">
@@ -84,7 +84,7 @@ function NotificationPanel({
 						aria-label="Open notifications"
 						aria-expanded={open}
 						onClick={() => setOpen((o) => !o)}
-						className="z-20 inline-flex cursor-pointer items-center justify-between gap-1 rounded-full bg-slate-200 px-1.5 py-0.5"
+						className="z-20 inline-flex cursor-pointer items-center justify-between gap-1 rounded-full bg-mist-200 px-1.5 py-0.5"
 					>
 						<RealBetisIcon className="size-3" />
 						<span className="text-sm font-medium">1 - 5</span>
@@ -144,8 +144,8 @@ function SpotifyNotification({
 				}
 			}}
 			className={cn(
-				"absolute inset-x-0 top-0 h-40 w-full space-y-1 rounded-4xl border border-gray-300 bg-white px-8 py-2 text-left shadow-lg",
-				selected === "spotify" ? "z-20" : "z-0 mt-4 bg-gray-100"
+				"absolute inset-x-0 top-0 h-40 w-full space-y-1 rounded-4xl border border-mist-300 bg-white px-8 py-2 text-left shadow-lg",
+				selected === "spotify" ? "z-20" : "z-0 mt-4 bg-mist-100"
 			)}
 		>
 			<div className="flex items-center gap-2">
@@ -166,7 +166,7 @@ function SpotifyNotification({
 			</div>
 			<div className="mt-2 space-y-0.5">
 				<Progress.Root
-					className="relative h-2 w-full rounded-full bg-gray-900"
+					className="relative h-2 w-full rounded-full bg-mist-900"
 					style={{
 						// Fix overflow clipping in Safari
 						// https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
@@ -174,7 +174,7 @@ function SpotifyNotification({
 					}}
 					value={50}
 				>
-					<Progress.Indicator className="h-2 w-1/2 rounded-[inherit] bg-zinc-500" />
+					<Progress.Indicator className="h-2 w-1/2 rounded-[inherit] bg-mist-500" />
 					<div
 						aria-label="nob"
 						className="absolute top-1/2 size-4 rounded-full border border-white bg-black"
@@ -224,12 +224,12 @@ function GoogleSoccerScores({
 				}
 			}}
 			className={cn(
-				"absolute inset-x-0 top-0 h-40 w-full rounded-4xl border border-gray-300 bg-white py-2 shadow-lg",
-				selected === "soccer" ? "z-20" : "z-0 mt-4 bg-gray-100"
+				"absolute inset-x-0 top-0 h-40 w-full rounded-4xl border border-mist-300 bg-white py-2 shadow-lg",
+				selected === "soccer" ? "z-20" : "z-0 mt-4 bg-mist-100"
 			)}
 		>
 			<div className="text-center text-sm">Google</div>
-			<div className="mb-3 flex items-center justify-between border-b border-gray-200 pb-3">
+			<div className="mb-3 flex items-center justify-between border-b border-mist-200 pb-3">
 				<div className="flex items-center">
 					<div className="flex flex-col items-center justify-center px-6">
 						<RealBetisIcon className="size-6" />

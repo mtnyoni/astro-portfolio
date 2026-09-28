@@ -22,9 +22,9 @@ import ProjectIcon from "@components/project-icon.astro"
 					<strong class="font-medium text-mist-700">
 						Tawanda M. Nyoni
 					</strong>
-					, Software Engineer and UI/UX Designer. I care <br
-						class="hidden md:block"
-					/> about how products look, feel, and work.
+					, Software Engineer and UI/UX Designer. I care{" "}
+					<br class="hidden md:block" /> about how products look,
+					feel, and work.
 				</p>
 				<p class="space-x-1">
 					<strong class="font-medium text-mist-700">
@@ -34,8 +34,8 @@ import ProjectIcon from "@components/project-icon.astro"
 					<strong class="font-medium text-mist-700">
 						Claxon Business Solutions
 					</strong>
-					. Working across <br class="hidden md:block" /> engineering and
-					design to make complex things feel simple.
+					. Working across <br class="hidden md:block" /> engineering
+					and design to make complex things feel simple.
 				</p>
 				<p>
 					Linux fanatic. Writing Odin, Go, Python, and TypeScript.
@@ -64,7 +64,10 @@ import ProjectIcon from "@components/project-icon.astro"
 				>
 					Writing
 				</a>
-				<span class="text-separator" aria-hidden="true"> | </span>
+				<span class="text-separator" aria-hidden="true">
+					{" "}
+					|{" "}
+				</span>
 				<a
 					class="ease-standard hover:text-link-hover flex items-center gap-1 transition-colors duration-200 motion-reduce:transition-none"
 					href="#connect"
@@ -86,33 +89,31 @@ import ProjectIcon from "@components/project-icon.astro"
 				Selected work
 			</h2>
 			<div class="-mt-2.5 min-w-0">
-				{
-					projects.map((project, index) => (
-						<a
-							class="rounded-project ease-standard hover:bg-project-hover hover:text-link-hover -mx-2.5 flex items-center gap-3.5 px-2.5 py-3 transition-colors duration-200 motion-reduce:transition-none"
-							href={project.link}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<ProjectIcon kind={project.tag} />
-							<span class="flex flex-col gap-px">
-								<span class="flex items-center gap-1.5 font-medium text-mist-700">
-									{project.title}{" "}
-									<ArrowUpRight
-										class="text-link-icon"
-										size={13}
-									/>
-								</span>
-								<span class="leading-inherit text-xs">
-									{project.description}
-								</span>
+				{projects.map((project, index) => (
+					<a
+						class="rounded-project ease-standard hover:bg-project-hover hover:text-link-hover -mx-2.5 flex items-center gap-3.5 px-2.5 py-3 transition-colors duration-200 motion-reduce:transition-none"
+						href={project.link}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<ProjectIcon kind={project.tag} />
+						<span class="flex flex-col gap-px">
+							<span class="flex items-center gap-1.5 font-medium text-mist-700">
+								{project.title}{" "}
+								<ArrowUpRight
+									class="text-link-icon"
+									size={13}
+								/>
 							</span>
-							<span class="text-caption text-metadata ml-auto tabular-nums">
-								{project.year}
+							<span class="leading-inherit text-xs">
+								{project.description}
 							</span>
-						</a>
-					))
-				}
+						</span>
+						<span class="text-caption text-metadata ml-auto tabular-nums">
+							{project.year}
+						</span>
+					</a>
+				))}
 			</div>
 		</section>
 
@@ -132,17 +133,13 @@ import ProjectIcon from "@components/project-icon.astro"
 					Little experiments exploring how designs come about, and
 					laying out my imagination.
 				</p>
-				<div class="max-xs:grid-cols-1 grid grid-cols-2 gap-1">
+				<div class="grid-cols-1 grid xs:grid-cols-2 gap-4 xs:gap-1">
 					<a
 						class="group ease-standard hover:text-link-hover transition-colors duration-200 motion-reduce:transition-none"
 						href="/crafts/line-chart"
 					>
-						<div
-							class="max-xs:h-55 bg-chart-surface relative grid h-50 place-items-center overflow-hidden rounded-xl border border-mist-300 shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
-						>
-							<div
-								class="absolute inset-0.75 overflow-hidden rounded-lg"
-							>
+						<div class="max-xs:h-55 bg-chart-surface relative grid h-50 place-items-center overflow-hidden rounded-xl border border-mist-300 shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45">
+							<div class="absolute inset-0.75 overflow-hidden rounded-lg">
 								<img
 									class="ease-standard h-full w-full rounded-lg object-cover transition-transform duration-300 motion-safe:group-hover:scale-105 motion-reduce:transition-none"
 									src={chart.src}
@@ -154,20 +151,14 @@ import ProjectIcon from "@components/project-icon.astro"
 							</div>
 						</div>
 						<div class="block pt-1">
-							<h3
-								class="flex items-center gap-1.25 text-xs text-mist-500"
-							>
+							<h3 class="flex items-center gap-1.25 text-xs text-mist-500">
 								Animated line chart
 							</h3>
 						</div>
 					</a>
 					<div class="group">
-						<div
-							class="max-xs:h-55 bg-video-surface relative h-50 overflow-hidden rounded-xl border border-mist-300 shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45"
-						>
-							<div
-								class="absolute inset-0.75 overflow-hidden rounded-lg"
-							>
+						<div class="max-xs:h-55 bg-video-surface relative h-50 overflow-hidden rounded-xl border border-mist-300 shadow-[inset_0_0_0_1px_#ffffff,inset_0_1px_0_#ffffff,0_1px_2px_#24303226] max-sm:h-45">
+							<div class="absolute inset-0.75 overflow-hidden rounded-lg">
 								<video
 									class="size-full rounded-lg object-cover"
 									id="notification-preview"
@@ -200,9 +191,7 @@ import ProjectIcon from "@components/project-icon.astro"
 							class="ease-standard hover:text-link-hover block pt-1 transition-colors duration-200 motion-reduce:transition-none"
 							href="/crafts/samsung-notifications"
 						>
-							<h3
-								class="flex items-center gap-1.25 text-xs text-mist-500"
-							>
+							<h3 class="flex items-center gap-1.25 text-xs text-mist-500">
 								Samsung notifications
 							</h3>
 						</a>
@@ -233,9 +222,7 @@ import ProjectIcon from "@components/project-icon.astro"
 					href="/articles/what-does-it-mean-to-be-a-good-software-developer-in-the-age-of-ai"
 				>
 					<div class="-space-y-1.5">
-						<h3
-							class="leading-heading text-sm font-medium text-mist-700"
-						>
+						<h3 class="leading-heading text-sm font-medium text-mist-700">
 							What does it mean to be a good software developer in
 							the age of AI?
 						</h3>
@@ -295,9 +282,7 @@ import ProjectIcon from "@components/project-icon.astro"
 				</div>
 			</div>
 		</section>
-		<footer
-			class="text-micro text-footer-copy mt-3 ml-33.5 flex justify-between gap-4 pt-3 max-sm:ml-0"
-		>
+		<footer class="text-micro text-footer-copy mt-3 ml-33.5 flex justify-between gap-4 pt-3 max-sm:ml-0">
 			<span>© {new Date().getFullYear()} Tawanda Nyoni</span>
 		</footer>
 	</main>
